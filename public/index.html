@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ゴルフAIコーチ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            green: {
+              900: '#1E5631',
+              800: '#2D6A4F',
+              700: '#40916C',
+              100: '#D8F3DC',
+              50: '#F5F7F5',
+            },
+            gold: {
+              500: '#D4A017',
+              400: '#E3B23C',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body { background-color: #F5F7F5; font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; }
+    .nav-active { border-bottom: 3px solid #D4A017; color: #1E5631; font-weight: 700; }
+    .card { background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .btn-primary { background: #1E5631; color: white; border-radius: 8px; padding: 10px 20px; font-weight: 600; transition: background 0.2s; cursor: pointer; }
+    .btn-primary:hover { background: #2D6A4F; }
+    .btn-primary:disabled { background: #9CA3AF; cursor: not-allowed; }
+    .btn-gold { background: #D4A017; color: white; border-radius: 8px; padding: 10px 20px; font-weight: 600; transition: background 0.2s; cursor: pointer; }
+    .btn-gold:hover { background: #E3B23C; }
+    .btn-danger { background: #EF4444; color: white; border-radius: 6px; padding: 4px 10px; font-size: 12px; cursor: pointer; }
+    .star { cursor: pointer; font-size: 24px; color: #D1D5DB; transition: color 0.1s; }
+    .star.active { color: #D4A017; }
+    .analysis-box { background: #F0F9FF; border: 1px solid #BAE6FD; border-radius: 8px; padding: 16px; white-space: pre-wrap; line-height: 1.8; }
+    .spinner { border: 3px solid #E5E7EB; border-top-color: #1E5631; border-radius: 50%; width: 28px; height: 28px; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    input, textarea, select { border: 1px solid #D1D5DB; border-radius: 8px; padding: 8px 12px; width: 100%; outline: none; transition: border-color 0.2s; }
+    input:focus, textarea:focus, select:focus { border-color: #2D6A4F; }
+    label { font-size: 14px; font-weight: 600; color: #374151; display: block; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header style="background: #1E5631;" class="sticky top-0 z-50 shadow-lg">
+  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span style="font-size:28px;">⛳</span>
+      <div>
+        <h1 class="text-white font-bold text-lg leading-tight">ゴルフAIコーチ</h1>
+        <p class="text-green-100 text-xs opacity-80">Golf Studio AI Support Coach</p>
+      </div>
+    </div>
+    <div id="goal-display" class="text-right hidden sm:block">
+      <p class="text-xs text-green-100 opacity-70">現在の目標</p>
+      <p id="header-goal" class="text-gold-400 font-semibold text-sm" style="color:#E3B23C;">—</p>
+    </div>
+  </div>
+  <!-- Nav -->
+  <nav style="background: rgba(0,0,0,0.2);">
+    <div class="max-w-5xl mx-auto px-4 flex gap-1 overflow-x-auto">
+      <button onclick="showView('dashboard')" id="nav-dashboard" class="nav-btn nav-active text-white px-4 py-2 text-sm whitespace-nowrap">🏠 ダッシュボード</button>
+      <button onclick="showView('sessions')" id="nav-sessions" class="nav-btn text-white opacity-80 px-4 py-2 text-sm whitespace-nowrap">📝 練習ログ</button>
+      <button onclick="showView('photo')" id="nav-photo" class="nav-btn text-white opacity-80 px-4 py-2 text-sm whitespace-nowrap">📸 データ分析</button>
+      <button onclick="showView('rounds')" id="nav-rounds" class="nav-btn text-white opacity-80 px-4 py-2 text-sm whitespace-nowrap">🏌️ ラウンド記録</button>
+      <button onclick="showView('ai')" id="nav-ai" class="nav-btn text-white opacity-80 px-4 py-2 text-sm whitespace-nowrap">🤖 AIコーチ</button>
+    </div>
+  </nav>
+</header>
+
+<main class="max-w-5xl mx-auto px-4 py-6">
+
+  <!-- ===== DASHBOARD ===== -->
+  <div id="view-dashboard">
+    <!-- Goal Card -->
+    <div class="card p-5 mb-4">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="font-bold text-green-900 text-lg flex items-center gap-2">🎯 目標設定</h2>
+        <button onclick="saveGoal()" class="btn-primary text-sm px-4 py-2">保存</button>
+      </div>
+      <input id="goal-input" type="text" placeholder="例: 今年中に90台を達成する、ドライバーの飛距離を230ヤードにする" />
+    </div>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
+      <div class="card p-4 text-center">
+        <p class="text-3xl font-bold text-green-800" id="stat-sessions">0</p>
+        <p class="text-xs text-gray-500 mt-1">練習セッション</p>
+      </div>
+      <div class="card p-4 text-center">
+        <p class="text-3xl font-bold text-green-800" id="stat-rounds">0</p>
+        <p class="text-xs text-gray-500 mt-1">ラウンド数</p>
+      </div>
+      <div class="card p-4 text-center">
+        <p class="text-3xl font-bold text-gold-500" id="stat-avg-score" style="color:#D4A017;">—</p>
+        <p class="text-xs text-gray-500 mt-1">平均スコア</p>
+      </div>
+      <div class="card p-4 text-center">
+        <p class="text-3xl font-bold text-green-800" id="stat-best-score">—</p>
+        <p class="text-xs text-gray-500 mt-1">ベストスコア</p>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div class="card p-5">
+        <h3 class="font-bold text-green-900 mb-3">📝 最近の練習</h3>
+        <div id="recent-sessions" class="space-y-2 text-sm text-gray-600">
+          <p class="text-gray-400">練習記録がありません</p>
+        </div>
+      </div>
+      <div class="card p-5">
+        <h3 class="font-bold text-green-900 mb-3">🏌️ 最近のラウンド</h3>
+        <div id="recent-rounds" class="space-y-2 text-sm text-gray-600">
+          <p class="text-gray-400">ラウンド記録がありません</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SESSIONS ===== -->
+  <div id="view-sessions" class="hidden">
+    <div class="card p-5 mb-4">
+      <h2 class="font-bold text-green-900 text-lg mb-4">📝 練習セッションを記録</h2>
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label>日付</label>
+          <input type="date" id="sess-date" />
+        </div>
+        <div>
+          <label>練習時間（分）</label>
+          <input type="number" id="sess-duration" placeholder="例: 60" min="1" />
+        </div>
+      </div>
+      <div class="mb-4">
+        <label>練習テーマ</label>
+        <input type="text" id="sess-theme" placeholder="例: アイアンのスウィングプレーン修正、バンカー練習" />
+      </div>
+      <div class="mb-4">
+        <label>練習内容・メモ</label>
+        <textarea id="sess-notes" rows="4" placeholder="今日の練習の詳細を記録してください。気づいた点、コーチからのアドバイス、感覚など"></textarea>
+      </div>
+      <div class="mb-4">
+        <label>本日の練習評価</label>
+        <div class="flex gap-2 mt-1" id="star-rating">
+          <span class="star" data-val="1" onclick="setRating(1)">★</span>
+          <span class="star" data-val="2" onclick="setRating(2)">★</span>
+          <span class="star" data-val="3" onclick="setRating(3)">★</span>
+          <span class="star" data-val="4" onclick="setRating(4)">★</span>
+          <span class="star" data-val="5" onclick="setRating(5)">★</span>
+        </div>
+      </div>
+      <button onclick="addSession()" class="btn-primary w-full">記録を保存</button>
+    </div>
+
+    <!-- Session List -->
+    <div class="card p-5">
+      <h3 class="font-bold text-green-900 mb-3">練習記録一覧</h3>
+      <div id="sessions-list" class="space-y-3">
+        <p class="text-gray-400 text-sm">練習記録がありません</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PHOTO ANALYSIS ===== -->
+  <div id="view-photo" class="hidden">
+    <div class="card p-5 mb-4">
+      <h2 class="font-bold text-green-900 text-lg mb-2">📸 測定データ分析</h2>
+      <p class="text-sm text-gray-500 mb-4">弾道測定器（トラックマン、ガーミン等）やスウィング分析の画面写真をアップロードすると、AIが詳しく評価します。</p>
+
+      <div class="mb-4">
+        <label>データ画像</label>
+        <div id="drop-zone" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-green-700 transition-colors"
+             onclick="document.getElementById('photo-input').click()"
+             ondragover="event.preventDefault(); this.style.borderColor='#1E5631'"
+             ondragleave="this.style.borderColor=''"
+             ondrop="handleDrop(event)">
+          <input type="file" id="photo-input" accept="image/*" class="hidden" onchange="handleFileSelect(event)" />
+          <div id="drop-placeholder">
+            <p class="text-4xl mb-2">📷</p>
+            <p class="text-gray-500 text-sm">クリックまたはドラッグ&ドロップで画像を選択</p>
+            <p class="text-gray-400 text-xs mt-1">JPEG, PNG, GIF, WEBP 対応</p>
+          </div>
+          <img id="photo-preview" class="hidden max-h-64 mx-auto rounded" />
+        </div>
+      </div>
+
+      <div class="mb-4">
+        <label>追加コンテキスト（任意）</label>
+        <textarea id="photo-context" rows="2" placeholder="例: 7番アイアンで打った時のデータです。最近スライスが出やすく悩んでいます。"></textarea>
+      </div>
+
+      <button onclick="analyzePhoto()" id="analyze-photo-btn" class="btn-gold w-full">AIで分析する</button>
+    </div>
+
+    <div id="photo-result" class="hidden card p-5">
+      <h3 class="font-bold text-green-900 mb-3">🤖 AI分析結果</h3>
+      <div id="photo-analysis" class="analysis-box"></div>
+    </div>
+  </div>
+
+  <!-- ===== ROUNDS ===== -->
+  <div id="view-rounds" class="hidden">
+    <div class="card p-5 mb-4">
+      <h2 class="font-bold text-green-900 text-lg mb-4">🏌️ ラウンド記録</h2>
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div>
+          <label>ラウンド日</label>
+          <input type="date" id="round-date" />
+        </div>
+        <div>
+          <label>コース名</label>
+          <input type="text" id="round-course" placeholder="例: 〇〇ゴルフクラブ" />
+        </div>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+        <div>
+          <label>スコア</label>
+          <input type="number" id="round-score" placeholder="例: 95" min="54" />
+        </div>
+        <div>
+          <label>パット数</label>
+          <input type="number" id="round-putts" placeholder="例: 34" min="18" />
+        </div>
+        <div>
+          <label>FW キープ率 (%)</label>
+          <input type="number" id="round-fairways" placeholder="例: 50" min="0" max="100" />
+        </div>
+        <div>
+          <label>パーオン率 (%)</label>
+          <input type="number" id="round-greens" placeholder="例: 30" min="0" max="100" />
+        </div>
+      </div>
+      <div class="mb-4">
+        <label>メモ・コメント</label>
+        <textarea id="round-notes" rows="3" placeholder="ラウンドの感想、気になったホール、天候など自由に記録してください"></textarea>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="addRound(false)" class="btn-primary flex-1">記録のみ保存</button>
+        <button onclick="addRound(true)" class="btn-gold flex-1">記録 + AI分析</button>
+      </div>
+    </div>
+
+    <div id="round-analysis-result" class="hidden card p-5 mb-4">
+      <h3 class="font-bold text-green-900 mb-3">🤖 ラウンド分析</h3>
+      <div id="round-analysis-text" class="analysis-box"></div>
+    </div>
+
+    <!-- Round List -->
+    <div class="card p-5">
+      <h3 class="font-bold text-green-900 mb-3">ラウンド記録一覧</h3>
+      <div id="rounds-list" class="space-y-3">
+        <p class="text-gray-400 text-sm">ラウンド記録がありません</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== AI COACH ===== -->
+  <div id="view-ai" class="hidden">
+    <div class="card p-5 mb-4 text-center">
+      <div class="text-5xl mb-3">🤖</div>
+      <h2 class="font-bold text-green-900 text-xl mb-2">AIコーチング サマリー</h2>
+      <p class="text-gray-500 text-sm mb-6">これまでの練習記録とラウンド結果を総合的に分析し、<br/>あなたに最適なコーチングアドバイスを提供します。</p>
+      <button onclick="getCoachingSummary()" id="summary-btn" class="btn-gold px-8 py-3 text-lg">総合分析を開始</button>
+    </div>
+
+    <div id="summary-loading" class="hidden card p-8 text-center">
+      <div class="spinner mx-auto mb-4"></div>
+      <p class="text-gray-500">データを分析中です... しばらくお待ちください</p>
+    </div>
+
+    <div id="summary-result" class="hidden card p-5">
+      <h3 class="font-bold text-green-900 mb-3 text-lg">📋 コーチングサマリー</h3>
+      <div id="summary-text" class="analysis-box"></div>
+      <p class="text-xs text-gray-400 mt-3 text-right" id="summary-date"></p>
+    </div>
+  </div>
+
+</main>
+
+<!-- Loading overlay -->
+<div id="loading-overlay" class="hidden fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+  <div class="bg-white rounded-xl p-6 text-center shadow-xl">
+    <div class="spinner mx-auto mb-3"></div>
+    <p class="text-gray-600 font-medium" id="loading-text">処理中...</p>
+  </div>
+</div>
+
+<script>
+let appData = { goal: '', sessions: [], rounds: [] };
+let currentRating = 0;
+let photoBase64 = null;
+let photoMediaType = null;
+
+async function init() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('sess-date').value = today;
+  document.getElementById('round-date').value = today;
+  await loadData();
+}
+
+async function loadData() {
+  const res = await fetch('/api/data');
+  appData = await res.json();
+  renderAll();
+}
+
+function renderAll() {
+  const { goal, sessions, rounds } = appData;
+
+  if (goal) {
+    document.getElementById('goal-input').value = goal;
+    document.getElementById('header-goal').textContent = goal;
+    document.getElementById('goal-display').classList.remove('hidden');
+  }
+
+  document.getElementById('stat-sessions').textContent = sessions.length;
+  document.getElementById('stat-rounds').textContent = rounds.length;
+
+  if (rounds.length > 0) {
+    const scores = rounds.map(r => Number(r.score)).filter(s => s > 0);
+    const avg = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+    const best = Math.min(...scores);
+    document.getElementById('stat-avg-score').textContent = avg;
+    document.getElementById('stat-best-score').textContent = best;
+  }
+
+  const recentSessions = document.getElementById('recent-sessions');
+  if (sessions.length > 0) {
+    recentSessions.innerHTML = sessions.slice(0, 3).map(s => `
+      <div class="border-l-2 border-green-700 pl-3 py-1">
+        <p class="font-medium">${s.date} — ${s.theme}</p>
+        <p class="text-gray-400 text-xs">${s.duration}分 / ${'★'.repeat(s.rating)}${'☆'.repeat(5 - s.rating)}</p>
+      </div>
+    `).join('');
+  }
+
+  const recentRounds = document.getElementById('recent-rounds');
+  if (rounds.length > 0) {
+    recentRounds.innerHTML = rounds.slice(0, 3).map(r => `
+      <div class="border-l-2 border-gold-500 pl-3 py-1" style="border-color:#D4A017">
+        <p class="font-medium">${r.date} — ${r.course}</p>
+        <p class="text-gray-400 text-xs">スコア: ${r.score}打 / パット: ${r.putts}</p>
+      </div>
+    `).join('');
+  }
+
+  renderSessionsList();
+  renderRoundsList();
+}
+
+function renderSessionsList() {
+  const el = document.getElementById('sessions-list');
+  if (appData.sessions.length === 0) {
+    el.innerHTML = '<p class="text-gray-400 text-sm">練習記録がありません</p>';
+    return;
+  }
+  el.innerHTML = appData.sessions.map(s => `
+    <div class="border border-gray-100 rounded-lg p-4">
+      <div class="flex justify-between items-start mb-2">
+        <div>
+          <span class="font-semibold text-green-900">${s.date}</span>
+          <span class="ml-2 text-gray-600">${s.theme}</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-yellow-400">${'★'.repeat(s.rating)}${'☆'.repeat(5 - s.rating)}</span>
+          <button onclick="deleteSession('${s.id}')" class="btn-danger">削除</button>
+        </div>
+      </div>
+      <p class="text-sm text-gray-500">${s.duration}分練習</p>
+      ${s.notes ? `<p class="text-sm text-gray-600 mt-1 whitespace-pre-wrap">${escHtml(s.notes)}</p>` : ''}
+    </div>
+  `).join('');
+}
+
+function renderRoundsList() {
+  const el = document.getElementById('rounds-list');
+  if (appData.rounds.length === 0) {
+    el.innerHTML = '<p class="text-gray-400 text-sm">ラウンド記録がありません</p>';
+    return;
+  }
+  el.innerHTML = appData.rounds.map(r => `
+    <div class="border border-gray-100 rounded-lg p-4">
+      <div class="flex justify-between items-start mb-2">
+        <div>
+          <span class="font-semibold text-green-900">${r.date}</span>
+          <span class="ml-2 text-gray-600">${r.course}</span>
+        </div>
+        <button onclick="deleteRound('${r.id}')" class="btn-danger">削除</button>
+      </div>
+      <div class="grid grid-cols-4 gap-2 text-center mt-2">
+        <div class="bg-gray-50 rounded p-2"><p class="text-lg font-bold text-green-800">${r.score}</p><p class="text-xs text-gray-500">スコア</p></div>
+        <div class="bg-gray-50 rounded p-2"><p class="text-lg font-bold">${r.putts}</p><p class="text-xs text-gray-500">パット</p></div>
+        <div class="bg-gray-50 rounded p-2"><p class="text-lg font-bold">${r.fairways}%</p><p class="text-xs text-gray-500">FW</p></div>
+        <div class="bg-gray-50 rounded p-2"><p class="text-lg font-bold">${r.greens}%</p><p class="text-xs text-gray-500">GIR</p></div>
+      </div>
+      ${r.notes ? `<p class="text-sm text-gray-600 mt-2 whitespace-pre-wrap">${escHtml(r.notes)}</p>` : ''}
+      ${r.analysis ? `<details class="mt-3"><summary class="text-sm text-green-700 cursor-pointer font-medium">AI分析を見る</summary><div class="analysis-box mt-2 text-sm">${escHtml(r.analysis)}</div></details>` : ''}
+    </div>
+  `).join('');
+}
+
+function showView(name) {
+  ['dashboard', 'sessions', 'photo', 'rounds', 'ai'].forEach(v => {
+    document.getElementById('view-' + v).classList.add('hidden');
+    const nav = document.getElementById('nav-' + v);
+    nav.classList.remove('nav-active');
+    nav.classList.add('opacity-80');
+  });
+  document.getElementById('view-' + name).classList.remove('hidden');
+  const nav = document.getElementById('nav-' + name);
+  nav.classList.add('nav-active');
+  nav.classList.remove('opacity-80');
+}
+
+function setRating(val) {
+  currentRating = val;
+  document.querySelectorAll('.star').forEach(s => {
+    s.classList.toggle('active', Number(s.dataset.val) <= val);
+  });
+}
+
+async function saveGoal() {
+  const goal = document.getElementById('goal-input').value.trim();
+  if (!goal) return;
+  await fetch('/api/goal', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ goal }) });
+  appData.goal = goal;
+  document.getElementById('header-goal').textContent = goal;
+  document.getElementById('goal-display').classList.remove('hidden');
+  showToast('目標を保存しました');
+}
+
+async function addSession() {
+  const date = document.getElementById('sess-date').value;
+  const theme = document.getElementById('sess-theme').value.trim();
+  const duration = document.getElementById('sess-duration').value;
+  const notes = document.getElementById('sess-notes').value.trim();
+  if (!date || !theme || !duration || currentRating === 0) {
+    showToast('日付・テーマ・時間・評価を入力してください', true);
+    return;
+  }
+  showLoading('保存中...');
+  const res = await fetch('/api/sessions', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ date, theme, duration: Number(duration), notes, rating: currentRating })
+  });
+  const session = await res.json();
+  appData.sessions.unshift(session);
+  hideLoading();
+  document.getElementById('sess-theme').value = '';
+  document.getElementById('sess-duration').value = '';
+  document.getElementById('sess-notes').value = '';
+  setRating(0);
+  currentRating = 0;
+  renderAll();
+  showToast('練習記録を保存しました');
+}
+
+async function deleteSession(id) {
+  if (!confirm('この練習記録を削除しますか？')) return;
+  await fetch('/api/sessions/' + id, { method: 'DELETE' });
+  appData.sessions = appData.sessions.filter(s => s.id !== id);
+  renderAll();
+}
+
+async function addRound(withAnalysis) {
+  const date = document.getElementById('round-date').value;
+  const course = document.getElementById('round-course').value.trim();
+  const score = document.getElementById('round-score').value;
+  const putts = document.getElementById('round-putts').value;
+  const fairways = document.getElementById('round-fairways').value;
+  const greens = document.getElementById('round-greens').value;
+  const notes = document.getElementById('round-notes').value.trim();
+  if (!date || !course || !score) {
+    showToast('日付・コース・スコアを入力してください', true);
+    return;
+  }
+
+  let analysis = null;
+  if (withAnalysis) {
+    showLoading('AIがラウンドを分析中...');
+    const res = await fetch('/api/analyze-round', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ date, course, score, putts, fairways, greens, notes, goal: appData.goal })
+    });
+    const data = await res.json();
+    analysis = data.analysis;
+    document.getElementById('round-analysis-text').textContent = analysis;
+    document.getElementById('round-analysis-result').classList.remove('hidden');
+  } else {
+    showLoading('保存中...');
+  }
+
+  const res = await fetch('/api/rounds', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ date, course, score: Number(score), putts: Number(putts), fairways: Number(fairways), greens: Number(greens), notes, analysis })
+  });
+  const round = await res.json();
+  appData.rounds.unshift(round);
+  hideLoading();
+
+  document.getElementById('round-course').value = '';
+  document.getElementById('round-score').value = '';
+  document.getElementById('round-putts').value = '';
+  document.getElementById('round-fairways').value = '';
+  document.getElementById('round-greens').value = '';
+  document.getElementById('round-notes').value = '';
+  renderAll();
+  showToast(withAnalysis ? 'ラウンド記録とAI分析を保存しました' : 'ラウンド記録を保存しました');
+}
+
+async function deleteRound(id) {
+  if (!confirm('このラウンド記録を削除しますか？')) return;
+  await fetch('/api/rounds/' + id, { method: 'DELETE' });
+  appData.rounds = appData.rounds.filter(r => r.id !== id);
+  renderAll();
+}
+
+function handleFileSelect(event) {
+  const file = event.target.files[0];
+  if (file) processImageFile(file);
+}
+
+function handleDrop(event) {
+  event.preventDefault();
+  document.getElementById('drop-zone').style.borderColor = '';
+  const file = event.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) processImageFile(file);
+}
+
+function processImageFile(file) {
+  photoMediaType = file.type;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const result = e.target.result;
+    photoBase64 = result.split(',')[1];
+    const preview = document.getElementById('photo-preview');
+    preview.src = result;
+    preview.classList.remove('hidden');
+    document.getElementById('drop-placeholder').classList.add('hidden');
+  };
+  reader.readAsDataURL(file);
+}
+
+async function analyzePhoto() {
+  if (!photoBase64) {
+    showToast('画像を選択してください', true);
+    return;
+  }
+  const context = document.getElementById('photo-context').value.trim();
+  showLoading('AIが画像を分析中...');
+  document.getElementById('analyze-photo-btn').disabled = true;
+
+  const res = await fetch('/api/analyze-photo', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ imageBase64: photoBase64, mediaType: photoMediaType, context })
+  });
+  const data = await res.json();
+  hideLoading();
+  document.getElementById('analyze-photo-btn').disabled = false;
+
+  if (data.error) {
+    showToast('分析中にエラーが発生しました: ' + data.error, true);
+    return;
+  }
+
+  document.getElementById('photo-analysis').textContent = data.analysis;
+  document.getElementById('photo-result').classList.remove('hidden');
+  document.getElementById('photo-result').scrollIntoView({ behavior: 'smooth' });
+}
+
+async function getCoachingSummary() {
+  document.getElementById('summary-btn').disabled = true;
+  document.getElementById('summary-result').classList.add('hidden');
+  document.getElementById('summary-loading').classList.remove('hidden');
+
+  const res = await fetch('/api/coaching-summary', { method: 'POST' });
+  const data = await res.json();
+
+  document.getElementById('summary-loading').classList.add('hidden');
+  document.getElementById('summary-btn').disabled = false;
+
+  if (data.error) {
+    showToast('エラーが発生しました: ' + data.error, true);
+    return;
+  }
+
+  document.getElementById('summary-text').textContent = data.summary;
+  document.getElementById('summary-date').textContent = '分析日時: ' + new Date().toLocaleString('ja-JP');
+  document.getElementById('summary-result').classList.remove('hidden');
+  document.getElementById('summary-result').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showLoading(text = '処理中...') {
+  document.getElementById('loading-text').textContent = text;
+  document.getElementById('loading-overlay').classList.remove('hidden');
+}
+
+function hideLoading() {
+  document.getElementById('loading-overlay').classList.add('hidden');
+}
+
+function showToast(msg, isError = false) {
+  const toast = document.createElement('div');
+  toast.className = `fixed bottom-6 left-1/2 -translate-x-1/2 px-5 py-3 rounded-lg text-white font-medium shadow-lg z-50 transition-opacity`;
+  toast.style.background = isError ? '#EF4444' : '#1E5631';
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => { toast.style.opacity = '0'; setTimeout(() => toast.remove(), 300); }, 2500);
+}
+
+function escHtml(str) {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+init();
+</script>
+</body>
+</html>
