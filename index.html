@@ -503,7 +503,7 @@
   const PRODUCT_WEIGHT = "180g";
   const PRICE          = "¥6,500";
   const PRICE_NOTE     = "税込";
-  const PURCHASE_URL   = "#"; // TODO: 決済ページのURLに差し替える
+  const PURCHASE_URL   = "#"; // TODO: Square決済リンクに差し替える（発行手順は docs/square-payment-link.md 参照）
 
   document.querySelectorAll('.js-buy-btn').forEach((btn) => {
     btn.setAttribute('href', PURCHASE_URL);
