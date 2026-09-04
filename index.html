@@ -1,365 +1,654 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Café Lumière | ナチュラルで温かみのある空間</title>
-    
-    <!-- Google Fonts: Shippori Mincho -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'cafe-bg': '#FDFBF7', // 明るいベージュ（背景）
-                        'cafe-beige': '#EAE0D5', // ベージュ（セクション背景）
-                        'cafe-brown': '#5C4033', // ダークブラウン（メインテキスト）
-                        'cafe-light-brown': '#8B7355', // ライトブラウン（サブテキスト）
-                        'cafe-accent': '#C6A88B', // アクセントカラー
-                    },
-                    fontFamily: {
-                        serif: ['"Shippori Mincho"', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SHADOW SPEED STICK｜ヘッドスピード・飛距離アップを目指すゴルフトレーニングギア</title>
+<meta name="description" content="もっと速く振る。SHADOW SPEED STICKは、ヘッドスピード向上・飛距離アップを目指すゴルファーのためのスピードトレーニングギア。長さ100cm・重量180g。プロゴルファー影山拓真プロデュース。">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="canonical" href="https://example.com/">
 
-    <style>
-        body {
-            font-family: 'Shippori Mincho', serif;
-            scroll-behavior: smooth;
-        }
-        /* セクションタイトルの装飾 */
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 40px;
-            height: 2px;
-            background-color: #C6A88B;
-            margin: 16px auto 0;
-        }
-        /* 画像のホバーエフェクト */
-        .gallery-img-container {
-            overflow: hidden;
-        }
-        .gallery-img-container img {
-            transition: transform 0.5s ease;
-        }
-        .gallery-img-container:hover img {
-            transform: scale(1.05);
-        }
-    </style>
+<!-- OGP -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="SHADOW SPEED STICK">
+<meta property="og:title" content="SHADOW SPEED STICK｜ヘッドスピード・飛距離アップを目指すゴルフトレーニングギア">
+<meta property="og:description" content="もっと速く振る。SHADOW SPEED STICKは、ヘッドスピード向上・飛距離アップを目指すゴルファーのためのスピードトレーニングギア。長さ100cm・重量180g。プロゴルファー影山拓真プロデュース。">
+<meta property="og:image" content="/images/speed-stick-og.webp">
+<meta property="og:url" content="https://example.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SHADOW SPEED STICK｜ヘッドスピード・飛距離アップを目指すゴルフトレーニングギア">
+<meta name="twitter:description" content="もっと速く振る。ヘッドスピード向上・飛距離アップを目指すスピードトレーニングギア。">
+<meta name="twitter:image" content="/images/speed-stick-og.webp">
+
+<!-- Favicon (placeholder mark, swap for a real brand favicon later) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0A0A'/%3E%3Cpath d='M35 18 L66 18 L44 46 L64 46 L28 86 L41 50 L23 50 Z' fill='%23F5D300'/%3E%3C/svg%3E">
+
+<!-- Fonts: Oswald (英数・見出し用の力強い書体) / Noto Sans JP (本文) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0A0A0A',
+          smoke: '#151515',
+          paper: '#FFFFFF',
+          steel: '#8A8A8E',
+          speed: '#F5D300',
+        },
+        fontFamily: {
+          display: ['Oswald', 'sans-serif'],
+          sans: ['"Noto Sans JP"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background:#0A0A0A; }
+  .font-display { font-family: 'Oswald', sans-serif; }
+
+  /* スクロールフェード */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; will-change: opacity, transform; }
+  .reveal.is-visible { opacity: 1; transform: none; }
+
+  /* スマホ固定CTA */
+  #sticky-cta { transform: translateY(120%); transition: transform .35s ease; }
+  #sticky-cta.is-visible { transform: translateY(0); }
+
+  /* 画像プレースホルダー：ファイルが未配置でも崩れずに表示され、
+     /images 配下に本番画像を置くだけで自動的に差し替わる */
+  .media-frame { position: relative; overflow: hidden; background: #141414; }
+  .media-frame > img, .media-frame > video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .media-frame .ph-fallback {
+    position: absolute; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: .5rem;
+    background: repeating-linear-gradient(135deg, #1c1c1c 0 12px, #121212 12px 24px);
+    color: #6b6b6b; text-transform: uppercase; letter-spacing: .1em; font-size: .65rem; text-align: center; padding: 1rem;
+  }
+  .media-frame.is-broken > img, .media-frame.is-broken > video { display: none; }
+  .media-frame.is-broken .ph-fallback { display: flex; }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .accent-underline { position: relative; display: inline-block; }
+  .accent-underline::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 3px; background: #F5D300;
+  }
+
+  details > summary { list-style: none; }
+  details > summary::-webkit-details-marker { display: none; }
+  details .faq-icon { transition: transform .25s ease; }
+  details[open] .faq-icon { transform: rotate(45deg); }
+</style>
 </head>
-<body class="bg-cafe-bg text-cafe-brown antialiased selection:bg-cafe-accent selection:text-white">
+<body class="bg-ink text-paper antialiased selection:bg-speed selection:text-ink">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 bg-cafe-bg/90 backdrop-blur-md border-b border-cafe-beige transition-all duration-300">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <a href="#home" class="flex items-center gap-2 text-2xl font-bold text-cafe-brown tracking-widest">
-                    <i data-lucide="coffee" class="w-6 h-6 text-cafe-accent"></i>
-                    Lumière
-                </a>
+<!-- ============ Header ============ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 border-b border-transparent transition-colors duration-300">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
+    <a href="#hero" class="font-display font-semibold tracking-widest text-sm sm:text-base text-paper">
+      SHADOW <span class="text-speed">SPEED STICK</span>
+    </a>
+    <a href="#buy" class="js-buy-btn inline-flex items-center gap-1.5 bg-speed text-ink font-display font-semibold text-xs sm:text-sm tracking-wide px-4 py-2.5 hover:bg-white transition-colors">
+      購入する
+    </a>
+  </div>
+</header>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#concept" class="text-cafe-light-brown hover:text-cafe-brown transition-colors duration-300 tracking-wider">コンセプト</a>
-                    <a href="#menu" class="text-cafe-light-brown hover:text-cafe-brown transition-colors duration-300 tracking-wider">メニュー</a>
-                    <a href="#gallery" class="text-cafe-light-brown hover:text-cafe-brown transition-colors duration-300 tracking-wider">ギャラリー</a>
-                    <a href="#access" class="text-cafe-light-brown hover:text-cafe-brown transition-colors duration-300 tracking-wider">アクセス</a>
-                </div>
+<main>
 
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-cafe-brown hover:text-cafe-accent focus:outline-none">
-                        <i data-lucide="menu" class="w-7 h-7"></i>
-                    </button>
-                </div>
-            </div>
+<!-- ============ 01. HERO ============ -->
+<section id="hero" class="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-ink pt-16">
+  <div class="absolute inset-0">
+    <div class="media-frame w-full h-full opacity-70">
+      <img src="/images/speed-stick-hero.webp" alt="SHADOW SPEED STICK" fetchpriority="high"
+           onerror="this.parentElement.classList.add('is-broken')">
+      <div class="ph-fallback">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        <span>speed-stick-hero.webp<br>準備中</span>
+      </div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl w-full mx-auto px-5 sm:px-8 py-16">
+    <p class="reveal font-display tracking-[0.3em] text-speed text-xs sm:text-sm mb-5">GOLF SPEED TRAINING GEAR</p>
+
+    <h1 class="reveal font-sans font-black text-3xl sm:text-5xl leading-tight tracking-tight mb-6">
+      もっと、速く振れ。
+    </h1>
+
+    <div class="reveal font-display font-bold uppercase leading-[0.95] mb-6">
+      <span class="block text-5xl sm:text-7xl md:text-8xl">SHADOW</span>
+      <span class="block text-5xl sm:text-7xl md:text-8xl text-speed">SPEED STICK</span>
+    </div>
+
+    <p class="reveal text-steel text-sm sm:text-base leading-relaxed mb-8 max-w-md">
+      ヘッドスピードを鍛える。<br>
+      飛距離アップのためのスピードトレーニングギア。
+    </p>
+
+    <div class="reveal">
+      <a href="#buy" class="js-buy-btn inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-speed text-ink font-display font-bold text-base tracking-wide px-8 py-4 hover:bg-white transition-colors">
+        SHADOW SPEED STICKを購入する
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <a href="#pain" class="reveal absolute bottom-6 left-1/2 -translate-x-1/2 text-steel hover:text-paper transition-colors" aria-label="次のセクションへ">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+  </a>
+</section>
+
+<!-- ============ 02. 悩み・共感 ============ -->
+<section id="pain" class="bg-paper text-ink py-20 sm:py-28">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8">
+    <h2 class="reveal font-sans font-black text-3xl sm:text-4xl leading-snug mb-4">
+      あと10ヤード、<br>飛ばしたい。
+    </h2>
+    <p class="reveal text-steel text-sm sm:text-base leading-relaxed mb-10">
+      ドライバーを変える前に、<br>あなた自身のスピードを変える。
+    </p>
+
+    <ul class="reveal space-y-0 divide-y divide-neutral-200 border-t border-b border-neutral-200">
+      <li class="flex items-center gap-4 py-5">
+        <svg class="w-4 h-4 text-speed shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        <span class="text-base sm:text-lg font-medium">もっと、飛ばしたい。</span>
+      </li>
+      <li class="flex items-center gap-4 py-5">
+        <svg class="w-4 h-4 text-speed shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        <span class="text-base sm:text-lg font-medium">同伴者に、置いていかれたくない。</span>
+      </li>
+      <li class="flex items-center gap-4 py-5">
+        <svg class="w-4 h-4 text-speed shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        <span class="text-base sm:text-lg font-medium">昔より、飛距離が落ちてきた。</span>
+      </li>
+      <li class="flex items-center gap-4 py-5">
+        <svg class="w-4 h-4 text-speed shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+        <span class="text-base sm:text-lg font-medium">振っているのに、スピードが出ない。</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 03. なぜヘッドスピードなのか ============ -->
+<section id="why" class="bg-ink py-20 sm:py-28">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8">
+    <p class="reveal font-display tracking-[0.25em] text-speed text-xs mb-4">WHY HEAD SPEED</p>
+    <h2 class="reveal font-sans font-black text-3xl sm:text-4xl leading-snug mb-8">
+      飛距離は、<br><span class="text-speed">スピード</span>で変わる。
+    </h2>
+    <div class="reveal space-y-5 text-steel text-sm sm:text-base leading-relaxed">
+      <p>
+        ゴルフの飛距離は、クラブヘッドがボールに当たる瞬間の「スピード」に大きく左右されます。
+      </p>
+      <p>
+        フォームや力の入れ方が同じでも、そのスピードを上げることができれば、ボールへの伝わり方は変わってきます。
+      </p>
+      <p>
+        SHADOW SPEED STICKは、この「速く振る」という感覚を体に覚えさせるための、スピードトレーニングに特化した器具です。
+      </p>
+    </div>
+    <p class="reveal mt-8 text-[11px] text-neutral-600 leading-relaxed">
+      ※ヘッドスピード向上・飛距離アップを目的としたトレーニング器具です。効果を保証するものではありません。
+    </p>
+  </div>
+</section>
+
+<!-- ============ 04. SHADOW SPEED STICKとは ============ -->
+<section id="concept" class="bg-paper text-ink py-20 sm:py-28">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8 text-center">
+    <p class="reveal font-display tracking-[0.25em] text-neutral-400 text-xs mb-4">THE CONCEPT</p>
+    <h2 class="reveal font-sans font-black text-3xl sm:text-4xl leading-snug mb-8">
+      速く振る。<br>それだけを、追求した。
+    </h2>
+    <p class="reveal text-steel text-sm sm:text-base leading-relaxed max-w-md mx-auto">
+      「もっと速く振れるようになりたい」。<br>
+      そのシンプルな感覚を身体に覚え込ませるために生まれた、
+      ゴルフスイングスピードトレーニングギアです。
+    </p>
+
+    <div class="reveal grid grid-cols-3 gap-4 mt-12 text-left">
+      <div class="border-t-2 border-speed pt-4">
+        <p class="font-display font-semibold text-sm sm:text-base">シンプル設計</p>
+      </div>
+      <div class="border-t-2 border-speed pt-4">
+        <p class="font-display font-semibold text-sm sm:text-base">高い携帯性</p>
+      </div>
+      <div class="border-t-2 border-speed pt-4">
+        <p class="font-display font-semibold text-sm sm:text-base">継続しやすい</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 05. 180g / 100cmの商品設計 ============ -->
+<section id="design" class="bg-ink py-20 sm:py-28 overflow-hidden">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8 text-center">
+    <p class="reveal font-display tracking-[0.25em] text-speed text-xs mb-6">THE WEIGHT, THE PURPOSE</p>
+    <div class="reveal font-display font-bold text-speed leading-none text-[7rem] sm:text-[9rem]" data-count-to="180" data-suffix="g">0g</div>
+    <h2 class="reveal font-sans font-black text-2xl sm:text-3xl leading-snug mt-4 mb-6">
+      重さを鍛えるためではない。<br>スピードを鍛えるための180g。
+    </h2>
+    <p class="reveal text-steel text-sm sm:text-base leading-relaxed max-w-sm mx-auto">
+      速く振り抜くことに意識を集中できるバランス。<br>
+      その感覚を、繰り返し身体へ。
+    </p>
+  </div>
+</section>
+
+<!-- ============ 06. 商品ビジュアル ============ -->
+<section id="visual" class="bg-paper text-ink py-20 sm:py-28">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <div class="media-frame reveal aspect-[4/5] sm:aspect-[16/10]">
+      <img src="/images/speed-stick-product.webp" alt="SHADOW SPEED STICK 本体" loading="lazy"
+           onerror="this.parentElement.classList.add('is-broken')">
+      <div class="ph-fallback">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        <span>speed-stick-product.webp<br>準備中</span>
+      </div>
+    </div>
+    <p class="reveal text-center font-display tracking-widest text-xs text-steel mt-6">
+      SHADOW SPEED STICK — 100cm / 180g
+    </p>
+  </div>
+</section>
+
+<!-- ============ 07. 使用方法 ============ -->
+<section id="how-to" class="bg-ink py-20 sm:py-28">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8">
+    <p class="reveal font-display tracking-[0.25em] text-speed text-xs mb-4">HOW TO USE</p>
+    <h2 class="reveal font-sans font-black text-3xl sm:text-4xl mb-12">使い方はシンプル。</h2>
+
+    <ol id="steps-list" class="space-y-10"></ol>
+
+    <p class="reveal mt-10 text-[11px] text-neutral-600 leading-relaxed">
+      ※詳しいトレーニングメニュー（回数・頻度・バリエーション）は今後追加・更新予定です。
+    </p>
+  </div>
+</section>
+
+<!-- ============ 08. プロゴルファー 影山拓真 ============ -->
+<section id="story" class="bg-paper text-ink py-20 sm:py-28">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8">
+    <p class="reveal font-display tracking-[0.25em] text-neutral-400 text-xs mb-4 text-center md:text-left">PRODUCED BY A PRO GOLFER</p>
+    <h2 class="reveal font-sans font-black text-2xl sm:text-4xl leading-snug mb-10 text-center md:text-left">
+      プロゴルファーが、<br class="sm:hidden">本気で作った。
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+      <div class="media-frame reveal aspect-[3/4] order-1">
+        <img src="/images/taku-profile.webp" alt="プロゴルファー 影山拓真" loading="lazy"
+             onerror="this.parentElement.classList.add('is-broken')">
+        <div class="ph-fallback">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span>taku-profile.webp<br>準備中</span>
         </div>
+      </div>
 
-        <!-- Mobile Menu Panel -->
-        <div id="mobile-menu" class="md:hidden hidden bg-cafe-bg border-t border-cafe-beige">
-            <div class="px-4 pt-2 pb-4 space-y-1 text-center">
-                <a href="#concept" class="block px-3 py-3 text-cafe-brown hover:bg-cafe-beige rounded-md tracking-wider">コンセプト</a>
-                <a href="#menu" class="block px-3 py-3 text-cafe-brown hover:bg-cafe-beige rounded-md tracking-wider">メニュー</a>
-                <a href="#gallery" class="block px-3 py-3 text-cafe-brown hover:bg-cafe-beige rounded-md tracking-wider">ギャラリー</a>
-                <a href="#access" class="block px-3 py-3 text-cafe-brown hover:bg-cafe-beige rounded-md tracking-wider">アクセス</a>
-            </div>
+      <div class="reveal order-2">
+        <div class="space-y-5 text-sm sm:text-base leading-loose text-steel">
+          <p>ゴルファーなら、誰もが一度は思う。<br><span class="text-ink font-bold">「もっと、飛ばしたい。」</span></p>
+          <p>技術を磨くことも、クラブを変えることも、ひとつの方法。</p>
+          <p>でも、もっと速く振れるようになれば、<br>ゴルフはもっと変わる。</p>
+          <p>そのために作ったのが、<br><span class="text-ink font-bold">SHADOW SPEED STICK</span>です。</p>
         </div>
+        <div class="mt-8 pt-6 border-t border-neutral-200">
+          <p class="font-display font-semibold text-lg">影山拓真 <span class="text-steel text-sm">/ Taku</span></p>
+          <p class="text-xs text-steel tracking-wide mt-1">プロゴルファー</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09. 動画・ギャラリー ============ -->
+<section id="gallery" class="bg-ink py-20 sm:py-28">
+  <div class="max-w-3xl mx-auto px-5 sm:px-8">
+    <p class="reveal font-display tracking-[0.25em] text-speed text-xs mb-4">IN ACTION</p>
+    <h2 class="reveal font-sans font-black text-3xl sm:text-4xl mb-10">実際のスイングを見る。</h2>
+
+    <!--
+      動画の差し替え方法（下記のいずれかに置き換え）:
+      1) MP4:      <video controls playsinline src="/videos/speed-stick-swing.mp4" poster="/images/speed-stick-video-poster.webp" class="w-full h-full object-cover"></video>
+      2) YouTube:  <iframe class="w-full h-full" src="https://www.youtube.com/embed/VIDEO_ID" title="SHADOW SPEED STICK" frameborder="0" allowfullscreen loading="lazy"></iframe>
+      3) Instagram: Instagram公式の埋め込みコード（blockquote/iframe）に置き換え
+    -->
+    <div id="video-frame" class="media-frame reveal aspect-video mb-8" data-video-src="">
+      <img src="/images/speed-stick-video-poster.webp" alt="SHADOW SPEED STICK 使用動画" loading="lazy"
+           onerror="this.parentElement.classList.add('is-broken')">
+      <div class="ph-fallback">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 3v18"/><path d="M3 7.5h4"/><path d="M3 12h18"/><path d="M3 16.5h4"/><path d="M17 3v18"/><path d="M17 7.5h4"/><path d="M17 16.5h4"/></svg>
+        <span>speed-stick-video-poster.webp<br>準備中</span>
+      </div>
+      <button type="button" id="play-btn" aria-label="動画を再生" class="absolute inset-0 flex items-center justify-center group">
+        <span class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-speed flex items-center justify-center group-hover:scale-105 transition-transform">
+          <svg class="w-6 h-6 text-ink ml-0.5" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+        </span>
+      </button>
+    </div>
+
+    <div class="reveal flex gap-4 overflow-x-auto snap-x snap-mandatory no-scrollbar -mx-5 px-5 sm:mx-0 sm:px-0">
+      <div class="media-frame shrink-0 snap-start w-[70%] sm:w-[38%] aspect-[4/5]">
+        <img src="/images/speed-stick-detail-01.webp" alt="SHADOW SPEED STICK ディテール1" loading="lazy" onerror="this.parentElement.classList.add('is-broken')">
+        <div class="ph-fallback"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg><span>speed-stick-detail-01.webp</span></div>
+      </div>
+      <div class="media-frame shrink-0 snap-start w-[70%] sm:w-[38%] aspect-[4/5]">
+        <img src="/images/speed-stick-detail-02.webp" alt="SHADOW SPEED STICK ディテール2" loading="lazy" onerror="this.parentElement.classList.add('is-broken')">
+        <div class="ph-fallback"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg><span>speed-stick-detail-02.webp</span></div>
+      </div>
+      <div class="media-frame shrink-0 snap-start w-[70%] sm:w-[38%] aspect-[4/5]">
+        <img src="/images/speed-stick-training.webp" alt="SHADOW SPEED STICK 使用シーン" loading="lazy" onerror="this.parentElement.classList.add('is-broken')">
+        <div class="ph-fallback"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg><span>speed-stick-training.webp</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. 商品スペック ============ -->
+<section id="spec" class="bg-paper text-ink py-20 sm:py-28">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8">
+    <p class="reveal font-display tracking-[0.25em] text-neutral-400 text-xs mb-4 text-center">SPEC</p>
+    <h2 class="reveal font-display font-bold text-2xl sm:text-3xl mb-10 text-center tracking-wide">
+      SHADOW SPEED STICK
+    </h2>
+
+    <dl class="reveal divide-y divide-neutral-200 border-t border-b border-neutral-200">
+      <div class="flex items-center justify-between py-5">
+        <dt class="text-sm sm:text-base text-steel">LENGTH（長さ）</dt>
+        <dd class="font-display font-bold text-xl sm:text-2xl">100cm</dd>
+      </div>
+      <div class="flex items-center justify-between py-5">
+        <dt class="text-sm sm:text-base text-steel">WEIGHT（重量）</dt>
+        <dd class="font-display font-bold text-xl sm:text-2xl">180g</dd>
+      </div>
+      <div class="flex items-center justify-between py-5">
+        <dt class="text-sm sm:text-base text-steel">PRICE（価格）</dt>
+        <dd class="font-display font-bold text-xl sm:text-2xl">¥6,500<span class="text-xs text-steel ml-1">税込</span></dd>
+      </div>
+      <div class="flex items-center justify-between py-5">
+        <dt class="text-sm sm:text-base text-steel">PRODUCED BY</dt>
+        <dd class="font-display font-semibold text-base sm:text-lg">影山拓真</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ 11. FAQ ============ -->
+<section id="faq" class="bg-ink py-20 sm:py-28">
+  <div class="max-w-2xl mx-auto px-5 sm:px-8">
+    <p class="reveal font-display tracking-[0.25em] text-speed text-xs mb-4">FAQ</p>
+    <h2 class="reveal font-sans font-black text-3xl sm:text-4xl mb-10">よくあるご質問</h2>
+
+    <div id="faq-list" class="reveal divide-y divide-neutral-800 border-t border-b border-neutral-800"></div>
+  </div>
+</section>
+
+<!-- ============ 12. 購入CTA ============ -->
+<section id="buy" class="bg-ink py-20 sm:py-28 border-t border-neutral-800">
+  <div class="max-w-xl mx-auto px-5 sm:px-8 text-center">
+    <div class="media-frame reveal aspect-square max-w-xs mx-auto mb-10">
+      <img src="/images/speed-stick-product.webp" alt="SHADOW SPEED STICK" loading="lazy"
+           onerror="this.parentElement.classList.add('is-broken')">
+      <div class="ph-fallback">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        <span>speed-stick-product.webp<br>準備中</span>
+      </div>
+    </div>
+
+    <h2 class="reveal font-sans font-black text-2xl sm:text-3xl leading-snug mb-3">
+      飛距離アップへの一歩を、<br>今日から。
+    </h2>
+    <p class="reveal font-display font-bold text-3xl text-speed mb-8">¥6,500 <span class="text-sm text-steel font-sans font-normal">税込</span></p>
+
+    <a href="#" class="js-buy-btn reveal inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-speed text-ink font-display font-bold text-base tracking-wide px-10 py-4 hover:bg-white transition-colors">
+      SHADOW SPEED STICKを購入する
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+    <p class="reveal text-[11px] text-neutral-600 mt-4">安全な決済ページへ移動します</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ 13. Footer ============ -->
+<footer class="bg-black text-neutral-500 py-14 px-5 sm:px-8 border-t border-neutral-900">
+  <div class="max-w-6xl mx-auto flex flex-col items-center text-center">
+    <p class="font-display font-semibold tracking-widest text-paper mb-6">
+      SHADOW <span class="text-speed">SPEED STICK</span>
+    </p>
+
+    <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs mb-8">
+      <a href="#story" class="hover:text-paper transition-colors">ブランドストーリー</a>
+      <a href="#spec" class="hover:text-paper transition-colors">商品スペック</a>
+      <a href="#faq" class="hover:text-paper transition-colors">よくあるご質問</a>
+      <a href="#" class="hover:text-paper transition-colors">特定商取引法に基づく表記</a>
+      <a href="#" class="hover:text-paper transition-colors">プライバシーポリシー</a>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="relative h-screen flex items-center justify-center">
-        <!-- Background Image with Overlay -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=2047" alt="カフェ店内の風景" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-cafe-brown/40 mix-blend-multiply"></div>
-        </div>
-        
-        <!-- Hero Content -->
-        <div class="relative z-10 text-center text-white px-4 flex flex-col items-center">
-            <h1 class="text-5xl md:text-7xl font-bold tracking-widest mb-6 drop-shadow-lg">Café Lumière</h1>
-            <p class="text-xl md:text-2xl tracking-[0.2em] font-light drop-shadow-md">心ほどける、やさしい時間を。</p>
-            
-            <a href="#concept" class="mt-16 animate-bounce text-white/80 hover:text-white transition-colors">
-                <i data-lucide="chevron-down" class="w-10 h-10"></i>
-            </a>
-        </div>
-    </section>
+    <div class="flex gap-5 mb-8">
+      <a href="#" aria-label="Instagram" class="hover:text-paper transition-colors"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+      <a href="#" aria-label="YouTube" class="hover:text-paper transition-colors"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"/><path d="m10 15 5-3-5-3z"/></svg></a>
+      <a href="#" aria-label="X" class="hover:text-paper transition-colors"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></a>
+    </div>
 
-    <!-- Concept Section -->
-    <section id="concept" class="py-24 px-4 bg-cafe-bg">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold text-cafe-brown mb-12 tracking-widest section-title">Concept</h2>
-            
-            <div class="space-y-8 text-lg text-cafe-light-brown leading-relaxed tracking-wide">
-                <p>
-                    「Lumière（光）」という名の通り、<br class="hidden md:block">
-                    あたたかな木漏れ日のような空間で皆様をお迎えします。
-                </p>
-                <p>
-                    こだわりの豆を使用した自家焙煎コーヒーと、<br class="hidden md:block">
-                    体に優しい素材で作った手作りスイーツ。
-                </p>
-                <p>
-                    ブラウンとベージュを基調とした木の温もりを感じる店内で、<br class="hidden md:block">
-                    日常の喧騒から離れた、穏やかなひとときをお過ごしください。
-                </p>
-            </div>
-        </div>
-    </section>
+    <p class="text-[11px] text-neutral-700">&copy; 2026 SHADOW SPEED STICK. All rights reserved.</p>
+  </div>
+</footer>
 
-    <!-- Menu Section -->
-    <section id="menu" class="py-24 px-4 bg-cafe-beige">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-cafe-brown mb-16 text-center tracking-widest section-title">Menu</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                <!-- Coffee & Tea -->
-                <div>
-                    <div class="flex items-center gap-2 mb-8 text-cafe-brown">
-                        <i data-lucide="coffee" class="w-6 h-6"></i>
-                        <h3 class="text-2xl font-bold tracking-wider">Coffee & Tea</h3>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="flex justify-between items-end border-b border-cafe-brown/20 pb-2">
-                            <div>
-                                <h4 class="text-lg font-bold text-cafe-brown">ブレンドコーヒー</h4>
-                                <p class="text-sm text-cafe-light-brown mt-1">自家焙煎のオリジナルブレンド</p>
-                            </div>
-                            <span class="text-lg text-cafe-brown">¥600</span>
-                        </div>
-                        <div class="flex justify-between items-end border-b border-cafe-brown/20 pb-2">
-                            <div>
-                                <h4 class="text-lg font-bold text-cafe-brown">カフェラテ</h4>
-                                <p class="text-sm text-cafe-light-brown mt-1">たっぷりのミルクとエスプレッソ</p>
-                            </div>
-                            <span class="text-lg text-cafe-brown">¥650</span>
-                        </div>
-                        <div class="flex justify-between items-end border-b border-cafe-brown/20 pb-2">
-                            <div>
-                                <h4 class="text-lg font-bold text-cafe-brown">アールグレイティー</h4>
-                                <p class="text-sm text-cafe-light-brown mt-1">爽やかなベルガモットの香り</p>
-                            </div>
-                            <span class="text-lg text-cafe-brown">¥600</span>
-                        </div>
-                    </div>
-                </div>
+<!-- ============ スマホ固定CTA ============ -->
+<div id="sticky-cta" class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-ink border-t border-neutral-800 px-4 py-3 flex items-center justify-between gap-3" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom));">
+  <div class="min-w-0">
+    <p class="font-display font-semibold text-xs truncate">SHADOW SPEED STICK</p>
+    <p class="font-display font-bold text-speed text-sm">¥6,500</p>
+  </div>
+  <a href="#buy" class="js-buy-btn shrink-0 bg-speed text-ink font-display font-bold text-sm tracking-wide px-5 py-2.5">
+    購入する
+  </a>
+</div>
 
-                <!-- Sweets -->
-                <div>
-                    <div class="flex items-center gap-2 mb-8 text-cafe-brown">
-                        <i data-lucide="cake-slice" class="w-6 h-6"></i>
-                        <h3 class="text-2xl font-bold tracking-wider">Sweets</h3>
-                    </div>
-                    <div class="space-y-6">
-                        <div class="flex justify-between items-end border-b border-cafe-brown/20 pb-2">
-                            <div>
-                                <h4 class="text-lg font-bold text-cafe-brown">季節のフルーツタルト</h4>
-                                <p class="text-sm text-cafe-light-brown mt-1">旬の果物を贅沢に使用</p>
-                            </div>
-                            <span class="text-lg text-cafe-brown">¥750</span>
-                        </div>
-                        <div class="flex justify-between items-end border-b border-cafe-brown/20 pb-2">
-                            <div>
-                                <h4 class="text-lg font-bold text-cafe-brown">自家製チーズケーキ</h4>
-                                <p class="text-sm text-cafe-light-brown mt-1">濃厚でなめらかな口当たり</p>
-                            </div>
-                            <span class="text-lg text-cafe-brown">¥700</span>
-                        </div>
-                        <div class="flex justify-between items-end border-b border-cafe-brown/20 pb-2">
-                            <div>
-                                <h4 class="text-lg font-bold text-cafe-brown">クラシックプリン</h4>
-                                <p class="text-sm text-cafe-light-brown mt-1">昔ながらの固めプリン</p>
-                            </div>
-                            <span class="text-lg text-cafe-brown">¥550</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12 text-sm text-cafe-light-brown">
-                <p>※ 価格はすべて税込みです。</p>
-                <p>※ その他、季節限定メニューや軽食もご用意しております。</p>
-            </div>
-        </div>
-    </section>
+<!-- JSON-LD: 商品構造化データ（レビュー・評価は実データが無いため未掲載） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "SHADOW SPEED STICK",
+  "description": "ヘッドスピード向上・飛距離アップを目指すゴルフスイングスピードトレーニング器具。長さ100cm・重量180g。プロゴルファー影山拓真プロデュース。",
+  "image": "https://example.com/images/speed-stick-product.webp",
+  "brand": { "@type": "Brand", "name": "SHADOW SPEED STICK" },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "JPY",
+    "price": "6500",
+    "availability": "https://schema.org/InStock",
+    "url": "https://example.com/#buy"
+  }
+}
+</script>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="py-24 px-4 bg-cafe-bg">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-cafe-brown mb-16 text-center tracking-widest section-title">Gallery</h2>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                <!-- Photo 1 -->
-                <div class="gallery-img-container aspect-square rounded-lg shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?auto=format&fit=crop&q=80&w=800" alt="こだわりのコーヒー" class="w-full h-full object-cover">
-                </div>
-                <!-- Photo 2 -->
-                <div class="gallery-img-container aspect-square rounded-lg shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=800" alt="ナチュラルな店内インテリア" class="w-full h-full object-cover">
-                </div>
-                <!-- Photo 3 -->
-                <div class="gallery-img-container aspect-square rounded-lg shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&q=80&w=800" alt="手作りスイーツ" class="w-full h-full object-cover">
-                </div>
-                <!-- Photo 4 -->
-                <div class="gallery-img-container aspect-square rounded-lg shadow-sm lg:col-span-2">
-                    <img src="https://images.unsplash.com/photo-1525610553991-56e111536531?auto=format&fit=crop&q=80&w=1600" alt="窓際の落ち着く席" class="w-full h-full object-cover">
-                </div>
-                <!-- Photo 5 -->
-                <div class="gallery-img-container aspect-square rounded-lg shadow-sm">
-                    <img src="https://images.unsplash.com/photo-1600093463592-8e36ae95ef56?auto=format&fit=crop&q=80&w=800" alt="コーヒー豆" class="w-full h-full object-cover">
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+  /* =======================================================
+     CONFIG — 商品情報・価格・購入URLはここで一元管理。
+     PURCHASE_URL を変更するだけで、LP内すべての購入ボタンに反映される。
+  ======================================================= */
+  const PRODUCT_NAME   = "SHADOW SPEED STICK";
+  const PRODUCT_LENGTH = "100cm";
+  const PRODUCT_WEIGHT = "180g";
+  const PRICE          = "¥6,500";
+  const PRICE_NOTE     = "税込";
+  const PURCHASE_URL   = "#"; // TODO: Square決済リンクに差し替える（発行手順は docs/square-payment-link.md 参照）
 
-    <!-- Access Section -->
-    <section id="access" class="py-24 px-4 bg-cafe-beige">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold text-cafe-brown mb-16 text-center tracking-widest section-title">Access</h2>
-            
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <!-- Info -->
-                <div class="bg-cafe-bg p-8 md:p-12 rounded-xl shadow-sm border border-cafe-accent/20">
-                    <h3 class="text-2xl font-bold text-cafe-brown mb-6 tracking-widest">Café Lumière</h3>
-                    
-                    <ul class="space-y-6 text-cafe-light-brown">
-                        <li class="flex items-start gap-4">
-                            <i data-lucide="map-pin" class="w-6 h-6 text-cafe-accent shrink-0 mt-1"></i>
-                            <div>
-                                <p class="font-bold text-cafe-brown mb-1">Address</p>
-                                <p>〒150-0000<br>東京都渋谷区〇〇 1-2-3<br>ルミエールビル 1F</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <i data-lucide="clock" class="w-6 h-6 text-cafe-accent shrink-0 mt-1"></i>
-                            <div>
-                                <p class="font-bold text-cafe-brown mb-1">Open</p>
-                                <p>10:00 - 19:00 (L.O. 18:30)</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <i data-lucide="calendar-x-2" class="w-6 h-6 text-cafe-accent shrink-0 mt-1"></i>
-                            <div>
-                                <p class="font-bold text-cafe-brown mb-1">Closed</p>
-                                <p>毎週水曜日・第2木曜日</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <i data-lucide="train" class="w-6 h-6 text-cafe-accent shrink-0 mt-1"></i>
-                            <div>
-                                <p class="font-bold text-cafe-brown mb-1">Train</p>
-                                <p>〇〇線「〇〇駅」西口より徒歩5分</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+  document.querySelectorAll('.js-buy-btn').forEach((btn) => {
+    btn.setAttribute('href', PURCHASE_URL);
+  });
 
-                <!-- Map -->
-                <div class="h-[400px] lg:h-full min-h-[400px] rounded-xl overflow-hidden shadow-sm border border-cafe-accent/20">
-                    <!-- Google Maps Iframe (サンプルとして東京駅周辺を表示) -->
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.8280303808788!2d139.7671248!3d35.6812362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2sTokyo%20Station!5e0!3m2!1sen!2sjp!4v1712000000000!5m2!1sen!2sjp" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
+  /* =======================================================
+     使用方法ステップ — 後から回数・頻度・バリエーションを
+     追加/変更する場合は、この配列に項目を追加するだけでよい。
+  ======================================================= */
+  const TRAINING_STEPS = [
+    {
+      no: '01',
+      title: 'SHADOW SPEED STICKを握る',
+      desc: '通常のクラブと同じ感覚でグリップし、軽く構えを作ります。',
+    },
+    {
+      no: '02',
+      title: '速く振ることを意識してスイング',
+      desc: '力任せに振るのではなく、「速く振り抜く」ことだけを意識します。',
+    },
+    {
+      no: '03',
+      title: '継続的にスピードトレーニング',
+      desc: '数回の素振りを日々の習慣に。継続して身体に感覚を定着させます。',
+    },
+    // TODO: 公式トレーニングメニュー確定後、回数・頻度・バリエーションを追加
+  ];
 
-    <!-- Footer -->
-    <footer class="bg-cafe-brown text-cafe-beige py-12 px-4 text-center">
-        <div class="max-w-4xl mx-auto flex flex-col items-center">
-            <a href="#home" class="flex items-center gap-2 text-2xl font-bold mb-6 tracking-widest text-white">
-                <i data-lucide="coffee" class="w-6 h-6"></i>
-                Lumière
-            </a>
-            
-            <div class="flex gap-6 mb-8">
-                <a href="#" class="hover:text-white transition-colors"><i data-lucide="instagram" class="w-6 h-6"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i data-lucide="twitter" class="w-6 h-6"></i></a>
-                <a href="#" class="hover:text-white transition-colors"><i data-lucide="facebook" class="w-6 h-6"></i></a>
-            </div>
-            
-            <p class="text-sm opacity-80">&copy; 2026 Café Lumière. All rights reserved.</p>
-        </div>
-    </footer>
+  const stepsList = document.getElementById('steps-list');
+  TRAINING_STEPS.forEach((step) => {
+    const li = document.createElement('li');
+    li.className = 'reveal flex gap-5';
+    li.innerHTML = `
+      <span class="font-display font-bold text-3xl text-speed shrink-0 leading-none">${step.no}</span>
+      <div>
+        <p class="font-bold text-base sm:text-lg mb-1.5">${step.title}</p>
+        <p class="text-sm text-steel leading-relaxed">${step.desc}</p>
+      </div>
+    `;
+    stepsList.appendChild(li);
+  });
 
-    <!-- Scripts -->
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+  /* =======================================================
+     FAQ — 回答が未確定の項目は a を null にし、
+     ページ上には準備中の案内を表示。確定後はここに追記する。
+  ======================================================= */
+  const FAQ_ITEMS = [
+    {
+      q: 'どんなゴルファーにおすすめですか？',
+      a: 'ヘッドスピードの向上・飛距離アップを目指すすべてのゴルファーにおすすめです。特に「もっと飛ばしたい」と考えている方に向いています。',
+    },
+    {
+      q: '初心者でも使えますか？',
+      a: 'はい。使い方はシンプルなので、初心者の方でもお使いいただけます。',
+    },
+    {
+      q: 'どのくらいの頻度で使えばいいですか？',
+      a: '日々の素振り習慣の中に取り入れることをおすすめします。詳しいトレーニングメニューは今後アップデート予定です。',
+    },
+    {
+      q: '室内でも使用できますか？',
+      a: '天井の高さや周囲のスペースに十分注意していただければ、室内でもご使用いただけます。周囲の安全を確認の上ご使用ください。',
+    },
+    {
+      q: '商品の長さと重さを教えてください。',
+      a: `長さ${PRODUCT_LENGTH}、重量${PRODUCT_WEIGHT}です。`,
+    },
+    {
+      q: '支払い方法は？',
+      a: null, // TODO: 決済方法（クレジットカード／コンビニ払い等）確定後に追記
+    },
+    {
+      q: '配送には何日かかりますか？',
+      a: null, // TODO: 物流・配送スケジュール確定後に追記
+    },
+  ];
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcon = mobileMenuBtn.querySelector('i');
+  const faqList = document.getElementById('faq-list');
+  FAQ_ITEMS.forEach((item) => {
+    const details = document.createElement('details');
+    details.className = 'group py-1';
+    details.innerHTML = `
+      <summary class="flex items-center justify-between gap-4 py-5 cursor-pointer">
+        <span class="text-sm sm:text-base font-medium pr-4">${item.q}</span>
+        <span class="faq-icon shrink-0 text-speed text-xl leading-none">+</span>
+      </summary>
+      <div class="pb-5 pr-8 text-sm text-steel leading-relaxed">
+        ${item.a ?? '現在準備中です。確定次第、こちらに追記いたします。'}
+      </div>
+    `;
+    faqList.appendChild(details);
+  });
 
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            // アイコンの切り替え (menu <-> x) はLucideの再描画が必要なため、簡易的にクラス操作のみ
-        });
+  /* ヘッダー：スクロールで背景を付与 */
+  const header = document.getElementById('site-header');
+  const onScrollHeader = () => {
+    if (window.scrollY > 20) {
+      header.classList.add('bg-ink/95', 'backdrop-blur', 'border-neutral-800');
+    } else {
+      header.classList.remove('bg-ink/95', 'backdrop-blur', 'border-neutral-800');
+    }
+  };
+  onScrollHeader();
+  window.addEventListener('scroll', onScrollHeader, { passive: true });
 
-        // Smooth Scrolling and close mobile menu on click
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                // モバイルメニューが開いていたら閉じる
-                if (!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
-                }
+  /* スクロールフェードイン */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${(i % 4) * 60}ms`;
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+  /* 数字のカウントアップ */
+  function animateCount(el) {
+    const target = parseInt(el.dataset.countTo, 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 900;
+    const start = performance.now();
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const value = Math.round(target * (1 - Math.pow(1 - progress, 3)));
+      el.textContent = value + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        countObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('[data-count-to]').forEach((el) => countObserver.observe(el));
+
+  /* スマホ固定CTA：ヒーローを抜けたら表示 */
+  const stickyCta = document.getElementById('sticky-cta');
+  const heroSection = document.getElementById('hero');
+  const stickyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      stickyCta.classList.toggle('is-visible', !entry.isIntersecting);
+    });
+  }, { threshold: 0 });
+  stickyObserver.observe(heroSection);
+
+  /* 動画再生ボタン：動画URL未設定時は準備中メッセージを表示 */
+  const videoFrame = document.getElementById('video-frame');
+  const playBtn = document.getElementById('play-btn');
+  playBtn.addEventListener('click', () => {
+    const videoSrc = videoFrame.dataset.videoSrc;
+    if (videoSrc) {
+      videoFrame.innerHTML = `<video controls playsinline autoplay src="${videoSrc}" class="w-full h-full object-cover"></video>`;
+    } else {
+      playBtn.innerHTML = `<span class="text-xs sm:text-sm bg-ink/80 text-paper px-4 py-2 rounded-none">動画は準備中です</span>`;
+    }
+  });
+</script>
 </body>
 </html>

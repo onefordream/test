@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ご購入ありがとうございます｜SHADOW SPEED STICK</title>
+<meta name="description" content="SHADOW SPEED STICKのご購入ありがとうございます。決済完了のご案内ページです。">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="robots" content="noindex">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230A0A0A'/%3E%3Cpath d='M35 18 L66 18 L44 46 L64 46 L28 86 L41 50 L23 50 Z' fill='%23F5D300'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0A0A0A',
+          paper: '#FFFFFF',
+          steel: '#8A8A8E',
+          speed: '#F5D300',
+        },
+        fontFamily: {
+          display: ['Oswald', 'sans-serif'],
+          sans: ['"Noto Sans JP"', 'sans-serif'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  body { font-family: 'Noto Sans JP', sans-serif; }
+  .font-display { font-family: 'Oswald', sans-serif; }
+
+  .check-mark {
+    width: 72px; height: 72px; border-radius: 9999px; border: 3px solid #F5D300;
+    display: flex; align-items: center; justify-content: center;
+  }
+</style>
+</head>
+<body class="bg-ink text-paper antialiased min-h-screen flex flex-col">
+
+  <header class="px-5 sm:px-8 h-16 flex items-center border-b border-neutral-800">
+    <a href="/" class="font-display font-semibold tracking-widest text-sm sm:text-base">
+      SHADOW <span class="text-speed">SPEED STICK</span>
+    </a>
+  </header>
+
+  <main class="flex-1 flex items-center justify-center px-5 sm:px-8 py-16">
+    <div class="max-w-md w-full text-center">
+      <div class="check-mark mx-auto mb-8">
+        <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="#F5D300" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+
+      <p class="font-display tracking-[0.25em] text-speed text-xs mb-4">PAYMENT COMPLETE</p>
+
+      <h1 class="font-sans font-black text-2xl sm:text-3xl leading-snug mb-6">
+        ご購入ありがとうございます。
+      </h1>
+
+      <p class="text-steel text-sm sm:text-base leading-relaxed mb-2">
+        決済が完了しました。
+      </p>
+      <p class="text-steel text-sm sm:text-base leading-relaxed mb-10">
+        商品到着まで、今しばらくお待ちください。
+      </p>
+
+      <div class="border-t border-b border-neutral-800 py-6 mb-10 text-left">
+        <div class="flex items-center justify-between py-2">
+          <span class="text-xs text-steel">商品</span>
+          <span class="font-display font-semibold text-sm">SHADOW SPEED STICK</span>
+        </div>
+        <div class="flex items-center justify-between py-2">
+          <span class="text-xs text-steel">お届けについて</span>
+          <span class="text-xs text-steel text-right">ご登録のメールアドレスに<br>発送のご案内をお送りします</span>
+        </div>
+      </div>
+
+      <a href="/" class="inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-speed text-ink font-display font-bold text-sm tracking-wide px-8 py-4 hover:bg-white transition-colors">
+        トップページに戻る
+      </a>
+    </div>
+  </main>
+
+  <footer class="px-5 sm:px-8 py-8 text-center border-t border-neutral-900">
+    <p class="text-[11px] text-neutral-700">&copy; 2026 SHADOW SPEED STICK. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
