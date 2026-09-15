@@ -64,6 +64,13 @@
   #sticky-cta { transform: translateY(120%); transition: transform .35s ease; }
   #sticky-cta.is-visible { transform: translateY(0); }
 
+  /* ヒーロー商品ビジュアル：右からスッとスライドイン */
+  #hero-product { transform: translateX(130%); opacity: 0; transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), opacity .6s ease; }
+  #hero-product.is-visible { transform: translateX(0); opacity: 1; }
+  @media (prefers-reduced-motion: reduce) {
+    #hero-product { transition: none; }
+  }
+
   /* 画像プレースホルダー：ファイルが未配置でも崩れずに表示され、
      /images 配下に本番画像を置くだけで自動的に差し替わる */
   .media-frame { position: relative; overflow: hidden; background: #141414; }
@@ -118,6 +125,13 @@
       </div>
     </div>
     <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30"></div>
+  </div>
+
+  <!-- 商品ビジュアル：右からスライドインする演出。画像未配置時は自動的に非表示 -->
+  <div id="hero-product" class="absolute z-[6] top-[6.5rem] sm:top-24 right-0 w-[58%] sm:w-[36%] md:w-[30%] max-w-[380px] pointer-events-none">
+    <img src="/images/speed-stick-hero-product.webp" alt="" aria-hidden="true"
+         class="w-full h-auto drop-shadow-2xl" style="transform: rotate(-20deg);"
+         onerror="document.getElementById('hero-product').style.display='none'">
   </div>
 
   <div class="relative z-10 max-w-6xl w-full mx-auto px-5 sm:px-8 py-16">
@@ -579,6 +593,14 @@
     `;
     faqList.appendChild(details);
   });
+
+  /* ヒーロー商品ビジュアル：ページ読み込み直後に右からスライドイン */
+  const heroProduct = document.getElementById('hero-product');
+  if (heroProduct) {
+    window.addEventListener('load', () => {
+      setTimeout(() => heroProduct.classList.add('is-visible'), 300);
+    });
+  }
 
   /* ヘッダー：スクロールで背景を付与 */
   const header = document.getElementById('site-header');
