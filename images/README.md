@@ -6,6 +6,7 @@ LP（`index.html`）が参照している画像ファイルです。同名のフ
 | ファイル名 | 用途 | 推奨比率 |
 |---|---|---|
 | `speed-stick-hero.webp` | ファーストビュー背景 | 横長 |
+| `speed-stick-hero-product.png` | ヒーロー右上の商品ビジュアル（右からスライドイン） | 縦長（対角配置される斜めの商品写真） |
 | `speed-stick-product.webp` | 商品ビジュアル／購入セクション | 4:5 〜 16:10 |
 | `taku-profile.webp` | プロゴルファー影山拓真プロフィール写真 | 3:4（縦） |
 | `speed-stick-video-poster.webp` | 使用動画のサムネイル | 16:9 |
