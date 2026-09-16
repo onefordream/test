@@ -127,23 +127,30 @@
     <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30"></div>
   </div>
 
-  <!-- スイングビジュアル：右半分に大きく配置し、右からスライドイン。文字より背面（z-6 < コンテンツz-10）に表示され、テキストとの重なりは許容 -->
-  <div id="hero-product" class="absolute z-[6] right-0 bottom-0 h-[62%] sm:h-[75%] md:h-[85%] pointer-events-none">
-    <img src="/images/speed-stick-hero-product.png" alt="" aria-hidden="true"
-         class="h-full w-auto drop-shadow-2xl"
-         onerror="document.getElementById('hero-product').style.display='none'">
-  </div>
-
   <div class="relative z-10 max-w-6xl w-full mx-auto px-5 sm:px-8 py-16">
     <p class="reveal font-display tracking-[0.3em] text-speed text-xs sm:text-sm mb-5">GOLF SPEED TRAINING GEAR</p>
 
-    <h1 class="reveal font-sans font-black text-3xl sm:text-5xl leading-tight tracking-tight mb-6">
-      もっと、速く振れ。
-    </h1>
+    <!-- 見出しエリア：テキストは左50%に制限し、右50%にスイングビジュアルを絶対配置。
+         このラッパーの高さ＝h1の上端〜SHADOW SPEED STICKの下端の範囲そのものなので、
+         画像コンテナ（inset-y-0）は常にその範囲に正確に一致する -->
+    <div class="relative">
+      <div class="max-w-[50%]">
+        <h1 class="reveal font-sans font-black text-3xl sm:text-5xl leading-tight tracking-tight mb-6">
+          もっと、速く振れ。
+        </h1>
 
-    <div class="reveal font-display font-bold uppercase leading-[0.95] mb-6">
-      <span class="block text-5xl sm:text-7xl md:text-8xl">SHADOW</span>
-      <span class="block text-5xl sm:text-7xl md:text-8xl text-speed">SPEED STICK</span>
+        <div class="reveal font-display font-bold uppercase leading-[0.95] mb-6">
+          <span class="block text-5xl sm:text-7xl md:text-8xl">SHADOW</span>
+          <span class="block text-5xl sm:text-7xl md:text-8xl text-speed">SPEED STICK</span>
+        </div>
+      </div>
+
+      <!-- スイングビジュアル：右50%の範囲内・比率維持（object-fit: contain）で右からスライドイン -->
+      <div id="hero-product" class="absolute inset-y-0 right-0 z-[5] pointer-events-none" style="width: clamp(96px, 32vw, 320px); max-width: 50%;">
+        <img src="/images/speed-stick-hero-product.png" alt="" aria-hidden="true"
+             class="w-full h-full object-contain object-right drop-shadow-2xl"
+             onerror="document.getElementById('hero-product').style.display='none'">
+      </div>
     </div>
 
     <p class="reveal text-steel text-sm sm:text-base leading-relaxed mb-8 max-w-md">
