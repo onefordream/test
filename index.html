@@ -115,7 +115,8 @@
 
 <!-- ============ 01. HERO ============ -->
 <section id="hero" class="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-ink pt-16">
-  <div class="absolute inset-0">
+  <!-- 背景（z-0） -->
+  <div class="absolute inset-0 z-0">
     <div class="media-frame w-full h-full opacity-70">
       <img src="/images/speed-stick-hero.webp" alt="SHADOW SPEED STICK" fetchpriority="high"
            onerror="this.parentElement.classList.add('is-broken')">
@@ -127,30 +128,28 @@
     <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30"></div>
   </div>
 
-  <div class="relative z-10 max-w-6xl w-full mx-auto px-5 sm:px-8 py-16">
+  <!-- スイングビジュアル（z-1）：右側から大きく入り込み、文字の後ろに重なる -->
+  <div id="hero-product" class="absolute z-[1] pointer-events-none" style="right: -8%; top: 26%; width: 70%; height: auto; transform-origin: right center;">
+    <img src="/images/speed-stick-hero-product.png" alt="" aria-hidden="true"
+         class="w-full h-auto object-contain drop-shadow-2xl"
+         style="transform: scale(1.3); transform-origin: right center;"
+         onerror="document.getElementById('hero-product').style.display='none'">
+  </div>
+
+  <!-- 可読性確保のグラデーション（z-1、人物の手前・文字の奥） -->
+  <div class="absolute inset-0 z-[1] bg-gradient-to-r from-ink via-ink/40 to-transparent pointer-events-none"></div>
+
+  <!-- テキスト（z-2） -->
+  <div class="relative z-[2] max-w-6xl w-full mx-auto px-5 sm:px-8 py-16">
     <p class="reveal font-display tracking-[0.3em] text-speed text-xs sm:text-sm mb-5">GOLF SPEED TRAINING GEAR</p>
 
-    <!-- 見出しエリア：テキストは左50%に制限し、右50%にスイングビジュアルを絶対配置。
-         このラッパーの高さ＝h1の上端〜SHADOW SPEED STICKの下端の範囲そのものなので、
-         画像コンテナ（inset-y-0）は常にその範囲に正確に一致する -->
-    <div class="relative">
-      <div class="max-w-[50%]">
-        <h1 class="reveal font-sans font-black text-3xl sm:text-5xl leading-tight tracking-tight mb-6">
-          もっと、速く振れ。
-        </h1>
+    <h1 class="reveal font-sans font-black text-3xl sm:text-5xl leading-tight tracking-tight mb-6">
+      もっと、速く振れ。
+    </h1>
 
-        <div class="reveal font-display font-bold uppercase leading-[0.95] mb-6">
-          <span class="block text-5xl sm:text-7xl md:text-8xl">SHADOW</span>
-          <span class="block text-5xl sm:text-7xl md:text-8xl text-speed">SPEED STICK</span>
-        </div>
-      </div>
-
-      <!-- スイングビジュアル：右50%の範囲内・比率維持（object-fit: contain）で右からスライドイン -->
-      <div id="hero-product" class="absolute inset-y-0 right-0 z-[5] pointer-events-none" style="width: clamp(96px, 32vw, 320px); max-width: 50%;">
-        <img src="/images/speed-stick-hero-product.png" alt="" aria-hidden="true"
-             class="w-full h-full object-contain object-right drop-shadow-2xl"
-             onerror="document.getElementById('hero-product').style.display='none'">
-      </div>
+    <div class="reveal font-display font-bold uppercase leading-[0.95] mb-6">
+      <span class="block text-5xl sm:text-7xl md:text-8xl">SHADOW</span>
+      <span class="block text-5xl sm:text-7xl md:text-8xl text-speed">SPEED STICK</span>
     </div>
 
     <p class="reveal text-steel text-sm sm:text-base leading-relaxed mb-8 max-w-md">
@@ -158,7 +157,8 @@
       飛距離アップのためのスピードトレーニングギア。
     </p>
 
-    <div class="reveal">
+    <!-- 購入ボタン（z-3） -->
+    <div class="reveal relative z-[3]">
       <a href="#buy" class="js-buy-btn inline-flex items-center justify-center gap-2 w-full sm:w-auto bg-speed text-ink font-display font-bold text-base tracking-wide px-8 py-4 hover:bg-white transition-colors">
         SHADOW SPEED STICKを購入する
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -166,7 +166,7 @@
     </div>
   </div>
 
-  <a href="#pain" class="reveal absolute bottom-6 left-1/2 -translate-x-1/2 text-steel hover:text-paper transition-colors" aria-label="次のセクションへ">
+  <a href="#pain" class="reveal absolute bottom-6 left-1/2 -translate-x-1/2 z-[2] text-steel hover:text-paper transition-colors" aria-label="次のセクションへ">
     <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
   </a>
 </section>
