@@ -127,10 +127,10 @@
     <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/70 to-ink/30"></div>
   </div>
 
-  <!-- スイングビジュアル：右からスライドインする演出。画像未配置時は自動的に非表示 -->
-  <div id="hero-product" class="absolute z-[6] top-16 sm:top-20 right-0 w-[36%] sm:w-[26%] md:w-[22%] max-w-[300px] pointer-events-none">
+  <!-- スイングビジュアル：右半分に大きく配置し、右からスライドイン。文字より背面（z-6 < コンテンツz-10）に表示され、テキストとの重なりは許容 -->
+  <div id="hero-product" class="absolute z-[6] right-0 bottom-0 h-[62%] sm:h-[75%] md:h-[85%] pointer-events-none">
     <img src="/images/speed-stick-hero-product.png" alt="" aria-hidden="true"
-         class="w-full h-auto drop-shadow-2xl"
+         class="h-full w-auto drop-shadow-2xl"
          onerror="document.getElementById('hero-product').style.display='none'">
   </div>
 
