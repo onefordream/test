@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>先行予約お申し込み｜SHADOW SPEED STICK</title>
+<meta name="description" content="SHADOW SPEED STICK（ロゴ入りモデル）先行予約のお申し込みフォーム。先行予約期間 2026年11月15日〜11月30日、2026年12月1日から注文順に順次発送。">
+<style>
+  :root{
+    --ink:#0A0A0A;
+    --smoke:#151515;
+    --panel:#111111;
+    --line:#2A2A2A;
+    --paper:#FFFFFF;
+    --steel:#8A8A8E;
+    --speed:#F5D300;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Hiragino Sans',Meiryo,sans-serif;
+    background:var(--ink);
+    color:var(--paper);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+  }
+  .font-display{font-family:'Oswald','Arial Narrow','Hiragino Kaku Gothic ProN',sans-serif;}
+
+  /* ヘッダー（LPと共通の見た目） */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,10,10,.92);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(6px);
+  }
+  .header-inner{
+    max-width:680px;margin:0 auto;padding:14px 20px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-weight:600;letter-spacing:.15em;font-size:14px;color:var(--paper);text-decoration:none;}
+  .logo .accent{color:var(--speed);}
+  .back-link{font-size:12px;color:var(--steel);text-decoration:none;letter-spacing:.05em;}
+  .back-link:hover{color:var(--paper);}
+
+  main{max-width:680px;margin:0 auto;padding:40px 20px 64px;}
+
+  .page-label{
+    font-family:'Oswald','Arial Narrow',sans-serif;
+    color:var(--speed);font-size:12px;font-weight:600;letter-spacing:.3em;
+    text-transform:uppercase;margin-bottom:10px;
+  }
+  h1{font-size:26px;font-weight:900;line-height:1.4;letter-spacing:.02em;margin-bottom:8px;}
+  .period{color:var(--steel);font-size:13px;margin-bottom:28px;}
+  .period strong{color:var(--paper);font-weight:700;}
+
+  /* 案内ボックス */
+  .notice{
+    background:var(--smoke);border:1px solid var(--line);
+    padding:20px;margin-bottom:36px;font-size:14px;
+  }
+  .notice h2{font-size:14px;font-weight:700;margin-bottom:10px;letter-spacing:.05em;}
+  .notice ul{list-style:none;}
+  .notice li{padding-left:16px;position:relative;margin-bottom:6px;color:#E8E8E8;}
+  .notice li::before{content:'';position:absolute;left:0;top:13px;width:6px;height:2px;background:var(--speed);}
+  .notice .bonus{
+    margin-top:14px;padding-top:14px;border-top:1px solid var(--line);
+    color:#E8E8E8;
+  }
+  .notice .bonus strong{color:var(--speed);font-weight:700;}
+
+  /* フォーム */
+  .field{margin-bottom:26px;}
+  .field label,.field .label{
+    display:block;font-size:14px;font-weight:700;margin-bottom:8px;letter-spacing:.03em;
+  }
+  .req{
+    display:inline-block;background:var(--speed);color:var(--ink);
+    font-size:10px;font-weight:700;padding:1px 7px;margin-left:8px;vertical-align:2px;letter-spacing:.1em;
+  }
+  .opt{
+    display:inline-block;border:1px solid var(--steel);color:var(--steel);
+    font-size:10px;font-weight:700;padding:1px 7px;margin-left:8px;vertical-align:2px;letter-spacing:.1em;
+  }
+  .hint{font-size:12px;color:var(--steel);margin-top:6px;}
+  input[type="text"],input[type="email"],input[type="tel"],select,textarea{
+    width:100%;background:var(--panel);border:1px solid var(--line);
+    color:var(--paper);font-size:16px;font-family:inherit;
+    padding:14px 16px;border-radius:0;appearance:none;-webkit-appearance:none;
+  }
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--speed);}
+  textarea{resize:vertical;min-height:96px;}
+  .select-wrap{position:relative;}
+  .select-wrap::after{
+    content:'';position:absolute;right:18px;top:50%;width:8px;height:8px;
+    border-right:2px solid var(--steel);border-bottom:2px solid var(--steel);
+    transform:translateY(-70%) rotate(45deg);pointer-events:none;
+  }
+
+  /* 商品選択（ラジオカード） */
+  .product-card{
+    display:block;background:var(--smoke);border:1px solid var(--line);
+    padding:18px 18px 18px 52px;position:relative;cursor:pointer;margin-bottom:12px;
+  }
+  .product-card input[type="radio"]{
+    position:absolute;left:18px;top:22px;width:20px;height:20px;
+    appearance:none;-webkit-appearance:none;border:2px solid var(--steel);border-radius:50%;
+    background:transparent;cursor:pointer;
+  }
+  .product-card input[type="radio"]:checked{border-color:var(--speed);}
+  .product-card input[type="radio"]:checked::after{
+    content:'';position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;
+    background:var(--speed);transform:translate(-50%,-50%);
+  }
+  .product-card:has(input[type="radio"]:checked){border-color:var(--speed);background:#1B1A08;}
+  .product-name{font-size:16px;font-weight:700;line-height:1.5;}
+  .product-price{color:var(--speed);font-weight:700;}
+  .product-sub{font-size:12px;color:var(--steel);margin-top:4px;line-height:1.7;}
+
+  /* 合計目安 */
+  .estimate{
+    background:var(--smoke);border:1px solid var(--line);padding:20px;margin:32px 0;
+  }
+  .estimate h2{font-size:13px;font-weight:700;letter-spacing:.1em;margin-bottom:12px;color:var(--steel);}
+  .estimate .row{
+    display:flex;justify-content:space-between;font-size:14px;padding:6px 0;color:#E8E8E8;
+  }
+  .estimate .row.total{
+    border-top:1px solid var(--line);margin-top:10px;padding-top:14px;
+    font-size:16px;font-weight:700;color:var(--paper);
+  }
+  .estimate .row.total .amount{color:var(--speed);font-size:22px;}
+  .estimate .note{font-size:11px;color:var(--steel);margin-top:10px;}
+
+  /* 送信ボタン */
+  .submit-btn{
+    display:block;width:100%;background:var(--speed);color:var(--ink);
+    font-family:'Oswald','Arial Narrow',sans-serif;
+    font-size:18px;font-weight:600;letter-spacing:.15em;
+    padding:20px 16px;border:none;border-radius:0;cursor:pointer;
+    transition:background .2s ease;
+  }
+  .submit-btn:hover{background:#FFFFFF;}
+  .submit-btn:disabled{background:var(--steel);cursor:not-allowed;}
+  .submit-note{font-size:12px;color:var(--steel);text-align:center;margin-top:14px;}
+  .error-msg{
+    display:none;background:#2A0E0E;border:1px solid #7A2E2E;color:#F2B8B8;
+    padding:14px 16px;font-size:13px;margin-bottom:20px;
+  }
+
+  /* 完了画面 */
+  #complete-view{display:none;}
+  .complete-box{background:var(--smoke);border:1px solid var(--line);padding:28px 22px;text-align:center;}
+  .complete-box .check{
+    width:56px;height:56px;margin:0 auto 18px;border:2px solid var(--speed);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--speed);font-size:26px;font-weight:700;
+  }
+  .complete-box h2{font-size:20px;font-weight:900;margin-bottom:12px;}
+  .complete-box p{font-size:14px;color:#E8E8E8;}
+  .steps{text-align:left;margin:22px 0 6px;}
+  .steps li{
+    list-style:none;display:flex;gap:12px;margin-bottom:12px;font-size:14px;color:#E8E8E8;
+  }
+  .steps .num{
+    flex:0 0 auto;width:24px;height:24px;background:var(--speed);color:var(--ink);
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;
+    display:flex;align-items:center;justify-content:center;margin-top:3px;
+  }
+  .pay-btn{
+    display:block;background:var(--speed);color:var(--ink);text-decoration:none;
+    font-family:'Oswald','Arial Narrow',sans-serif;font-size:17px;font-weight:600;letter-spacing:.12em;
+    padding:18px 16px;margin-top:22px;transition:background .2s ease;
+  }
+  .pay-btn:hover{background:#FFFFFF;}
+  .pay-note{font-size:12px;color:var(--steel);margin-top:12px;}
+  .set-mail-note{
+    margin-top:22px;border:1px solid var(--speed);padding:16px;font-size:14px;color:#E8E8E8;
+  }
+
+  footer{
+    border-top:1px solid var(--line);padding:28px 20px 40px;text-align:center;
+  }
+  .footer-inner{max-width:680px;margin:0 auto;}
+  footer .seller{font-size:12px;color:var(--steel);margin-bottom:10px;line-height:1.9;}
+  footer a{color:var(--steel);font-size:12px;text-decoration:underline;}
+  footer a:hover{color:var(--paper);}
+
+  @media (max-width:480px){
+    h1{font-size:22px;}
+    main{padding:32px 16px 56px;}
+    .complete-box{padding:24px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo font-display" href="https://onefordream.github.io/test/">SHADOW <span class="accent">SPEED STICK</span></a>
+    <a class="back-link" href="https://onefordream.github.io/test/">商品ページに戻る</a>
+  </div>
+</header>
+
+<main>
+  <!-- ===== 申込フォーム ===== -->
+  <div id="form-view">
+    <p class="page-label">Pre-Order</p>
+    <h1>SHADOW SPEED STICK<br>先行予約お申し込み</h1>
+    <p class="period">先行予約期間: <strong>2026年11月15日（日）〜11月30日（月）</strong></p>
+
+    <div class="notice">
+      <h2>先行予約について</h2>
+      <ul>
+        <li>本商品は<strong>予約販売</strong>です。発送は<strong>2026年12月1日（火）</strong>から、ご注文順に順次行います。</li>
+        <li>スティック先行予約: <strong>6,900円（税込）</strong>。先行予約限定コンテンツ「影山プロオリジナルコンテンツ」付き。</li>
+        <li>スイング診断つきセット: <strong>16,200円（税込）</strong>。先着20件までの受付です。</li>
+        <li>送料: 1点のご注文は<strong>1,200円</strong>／2点以上のご注文は<strong>送料無料</strong>（同一のお届け先への同梱発送に限ります）。</li>
+        <li>このフォームの送信後、案内に沿って決済までお済ませください。フォームのご入力と決済の両方が確認できた時点で、先行予約が確定となります。</li>
+      </ul>
+      <p class="bonus"><strong>先行予約者限定特典</strong><br>
+      先行予約でご注文の方全員に、特典コンテンツ「影山プロオリジナルコンテンツ」（スティックの使い方＋トレーニングメニュー）をお付けします。特典はスティックの発送と同時期を目安に、ご入力いただいたメールアドレス宛にお送りします。</p>
+    </div>
+
+    <div class="error-msg" id="error-msg">送信できませんでした。通信環境をご確認のうえ、もう一度お試しください。解決しない場合は onefordream72@gmail.com までご連絡ください。</div>
+
+    <form id="order-form" novalidate>
+      <div class="field">
+        <label for="f-name">お名前<span class="req">必須</span></label>
+        <input type="text" id="f-name" name="entry.931322681" autocomplete="name" required>
+      </div>
+
+      <div class="field">
+        <label for="f-email">メールアドレス<span class="req">必須</span></label>
+        <input type="email" id="f-email" name="entry.932226743" autocomplete="email" required>
+        <p class="hint">決済との照合、特典・診断のご案内に使用します。</p>
+      </div>
+
+      <div class="field">
+        <label for="f-tel">電話番号<span class="req">必須</span></label>
+        <input type="tel" id="f-tel" name="entry.2084655412" autocomplete="tel" required>
+        <p class="hint">発送時のご連絡用です。</p>
+      </div>
+
+      <div class="field">
+        <label for="f-zip">郵便番号<span class="req">必須</span></label>
+        <input type="text" id="f-zip" name="entry.970911064" autocomplete="postal-code" inputmode="numeric" required>
+        <p class="hint">ハイフンあり・なし、どちらでも構いません。</p>
+      </div>
+
+      <div class="field">
+        <label for="f-address">お届け先住所<span class="req">必須</span></label>
+        <textarea id="f-address" name="entry.774364258" autocomplete="street-address" required></textarea>
+        <p class="hint">都道府県から、建物名・部屋番号までご入力ください。</p>
+      </div>
+
+      <div class="field">
+        <span class="label" id="product-label">商品の選択<span class="req">必須</span></span>
+        <label class="product-card">
+          <input type="radio" name="entry.190172869" value="スティック先行予約 — 6,900円" checked>
+          <span class="product-name">スティック先行予約 — <span class="product-price">6,900円</span></span>
+          <span class="product-sub">SHADOW SPEED STICK（ロゴ入りモデル）。先行予約限定コンテンツ付き。価格は税込です。</span>
+        </label>
+        <label class="product-card">
+          <input type="radio" name="entry.190172869" value="スイング診断つきセット — 16,200円（先着20件）">
+          <span class="product-name">スイング診断つきセット — <span class="product-price">16,200円</span></span>
+          <span class="product-sub">スティック＋影山プロのスイング動画診断。先着20件。価格は税込です。ご注文確定後、診断用動画の送り方をメールでご案内します。</span>
+        </label>
+      </div>
+
+      <div class="field">
+        <label for="f-qty">数量<span class="req">必須</span></label>
+        <div class="select-wrap">
+          <select id="f-qty" name="entry.1048756932" required>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <p class="hint">セットをお選びの場合も、診断は1件につき1回分です。</p>
+      </div>
+
+      <div class="estimate" aria-live="polite">
+        <h2>お支払い目安</h2>
+        <div class="row"><span id="est-product-label">商品代金（スティック先行予約 × 1）</span><span id="est-product">6,900円</span></div>
+        <div class="row"><span>送料</span><span id="est-shipping">1,200円</span></div>
+        <div class="row total"><span>合計目安</span><span class="amount" id="est-total">8,100円</span></div>
+        <p class="note">※表示はお支払い金額の目安です。実際の決済は、次の画面でご案内するSquareの決済ページで行います（送料は決済時に加算されます）。</p>
+      </div>
+
+      <div class="field">
+        <label for="f-note">備考<span class="opt">任意</span></label>
+        <textarea id="f-note" name="entry.1546930856"></textarea>
+        <p class="hint">配送のご希望などがありましたらご記入ください。</p>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">申し込む</button>
+      <p class="submit-note">送信後、次の画面でお支払いのご案内を表示します。</p>
+    </form>
+  </div>
+
+  <!-- ===== 完了画面 ===== -->
+  <div id="complete-view">
+    <p class="page-label">Thank You</p>
+    <div class="complete-box">
+      <div class="check">✓</div>
+      <h2>お申し込みを受け付けました</h2>
+      <p>先行予約のお申し込み、ありがとうございます。<br>あと少しで予約確定です。下記の手順でお支払いをお願いいたします。</p>
+      <ol class="steps">
+        <li><span class="num">1</span><span>下のボタンから、Squareの決済ページでお支払いください。</span></li>
+        <li><span class="num">2</span><span>フォームのご入力とご入金の両方が確認できた時点で、先行予約が確定となります。</span></li>
+        <li><span class="num">3</span><span>商品は2026年12月1日（火）から、ご注文順に順次発送します。先行予約限定特典は、発送と同時期を目安にメールでお送りします。</span></li>
+      </ol>
+
+      <div id="pay-for-stick">
+        <a class="pay-btn" href="https://square.link/u/bNeMpPtq?src=sheet">Squareで支払う</a>
+        <p class="pay-note">決済ページで色（イエロー／ブラック）をお選びいただけます。送料は決済時に加算されます。お申し込みと同じお名前・メールアドレスでお支払いください。</p>
+      </div>
+
+      <div id="pay-for-set" style="display:none;">
+        <div class="set-mail-note">セットの決済リンクは、お申し込み確認後にメールでご案内します。<br>ご入力いただいたメールアドレス宛にご連絡しますので、お待ちください。</div>
+        <p class="pay-note">注文確定後、診断用スイング動画の送り方もあわせてメールでご案内します。</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p class="seller">販売者: 合同会社 ONE FOR DREAM（GOLF STUDIO SHADOW 運営）<br>
+    お問い合わせ: onefordream72@gmail.com／070-8366-0392</p>
+    <a href="https://onefordream.github.io/test/#tokushoho">特定商取引法に基づく表記</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeJfkiM4ZlwoJMU3kRidXL_hN7tZpo4Z9_SFLmUuIVOwc9nMw/formResponse';
+  var PRICES = {
+    'スティック先行予約 — 6,900円': { price: 6900, label: 'スティック先行予約' },
+    'スイング診断つきセット — 16,200円（先着20件）': { price: 16200, label: 'スイング診断つきセット' }
+  };
+  var SHIPPING_SINGLE = 1200;
+
+  var form = document.getElementById('order-form');
+  var qtySelect = document.getElementById('f-qty');
+  var estProductLabel = document.getElementById('est-product-label');
+  var estProduct = document.getElementById('est-product');
+  var estShipping = document.getElementById('est-shipping');
+  var estTotal = document.getElementById('est-total');
+  var submitBtn = document.getElementById('submit-btn');
+  var errorMsg = document.getElementById('error-msg');
+
+  function yen(n) {
+    return n.toLocaleString('ja-JP') + '円';
+  }
+
+  function selectedProduct() {
+    var checked = form.querySelector('input[name="entry.190172869"]:checked');
+    return checked ? checked.value : null;
+  }
+
+  function updateEstimate() {
+    var value = selectedProduct();
+    var info = value ? PRICES[value] : null;
+    var qty = parseInt(qtySelect.value, 10) || 1;
+    if (!info) {
+      estProductLabel.textContent = '商品代金';
+      estProduct.textContent = '—';
+      estShipping.textContent = '—';
+      estTotal.textContent = '—';
+      return;
+    }
+    var productTotal = info.price * qty;
+    var shipping = qty >= 2 ? 0 : SHIPPING_SINGLE;
+    estProductLabel.textContent = '商品代金（' + info.label + ' × ' + qty + '）';
+    estProduct.textContent = yen(productTotal);
+    estShipping.textContent = shipping === 0 ? '無料' : yen(shipping);
+    estTotal.textContent = yen(productTotal + shipping);
+  }
+
+  var radios = form.querySelectorAll('input[name="entry.190172869"]');
+  for (var i = 0; i < radios.length; i++) {
+    radios[i].addEventListener('change', updateEstimate);
+  }
+  qtySelect.addEventListener('change', updateEstimate);
+  updateEstimate();
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    var product = selectedProduct();
+    submitBtn.disabled = true;
+    submitBtn.textContent = '送信中…';
+    errorMsg.style.display = 'none';
+
+    var data = new URLSearchParams(new FormData(form));
+    fetch(FORM_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: data.toString()
+    }).then(function () {
+      var isSet = product === 'スイング診断つきセット — 16,200円（先着20件）';
+      document.getElementById('pay-for-stick').style.display = isSet ? 'none' : 'block';
+      document.getElementById('pay-for-set').style.display = isSet ? 'block' : 'none';
+      document.getElementById('form-view').style.display = 'none';
+      document.getElementById('complete-view').style.display = 'block';
+      window.scrollTo(0, 0);
+    }).catch(function () {
+      errorMsg.style.display = 'block';
+      submitBtn.disabled = false;
+      submitBtn.textContent = '申し込む';
+      window.scrollTo(0, 0);
+    });
+  });
+})();
+</script>
+</body>
+</html>
