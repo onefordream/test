@@ -323,6 +323,11 @@
         <p class="pay-note">決済ページで色（イエロー／ブラック）をお選びいただけます。送料は決済時に加算されます。お申し込みと同じお名前・メールアドレスでお支払いください。</p>
       </div>
 
+      <div id="pay-for-nologo" style="display:none;">
+        <a class="pay-btn" href="https://square.link/u/ttRedKuM">Squareで支払う</a>
+        <p class="pay-note">送料は決済時に加算されます。お申し込みと同じお名前・メールアドレスでお支払いください。</p>
+      </div>
+
       <div id="pay-for-set" style="display:none;">
         <div class="set-mail-note">決済リンクは、お申し込み確認後にメールでご案内します。<br>ご入力いただいたメールアドレス宛にご連絡しますので、お待ちください。</div>
         <p class="pay-note">注文確定後、診断用スイング動画の送り方もあわせてメールでご案内します。</p>
@@ -413,9 +418,11 @@
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: data.toString()
     }).then(function () {
-      var isSet = product !== 'スティック先行予約 — 6,900円';
-      document.getElementById('pay-for-stick').style.display = isSet ? 'none' : 'block';
-      document.getElementById('pay-for-set').style.display = isSet ? 'block' : 'none';
+      var isStick = product === 'スティック先行予約 — 6,900円';
+      var isNologo = product === 'ロゴなしモデル — 5,900円';
+      document.getElementById('pay-for-stick').style.display = isStick ? 'block' : 'none';
+      document.getElementById('pay-for-nologo').style.display = isNologo ? 'block' : 'none';
+      document.getElementById('pay-for-set').style.display = (!isStick && !isNologo) ? 'block' : 'none';
       document.getElementById('form-view').style.display = 'none';
       document.getElementById('complete-view').style.display = 'block';
       window.scrollTo(0, 0);
