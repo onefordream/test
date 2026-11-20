@@ -49,7 +49,9 @@ footer a{color:#ccc}
 <footer><a href="index.html">SHADOW SPEED STICK 販売ページへ戻る</a><br>&copy; 2026 SHADOW SPEED STICK / 合同会社 ONE FOR DREAM</footer>
 <script>
 var ACCOUNTS = {
-  "test": { hash: "b9eff0fd7b588901a35d797ff73b4dee696b5b2c2fc8fa52a03f25c16a205b21", name: "テスト店舗様" }
+  "test": { hash: "b9eff0fd7b588901a35d797ff73b4dee696b5b2c2fc8fa52a03f25c16a205b21", name: "テスト店舗様" },
+  "shirai": { hash: "754c88b08b798a8d20a1f9b94cf3e92bb0c8c95dde71fabaa52bde6cc46303ad", name: "白井温視 様" },
+  "namotan": { hash: "b05c52419c296717e88014e40e93327de0c6dcaf3d33a4d31f9f78e848f88ed9", name: "なもたん 様" }
 };
 async function sha256(text){
   var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
