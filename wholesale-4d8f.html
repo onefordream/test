@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>店舗様専用 卸注文ページ | SHADOW SPEED STICK</title>
+<title>店舗様専用 お問い合わせ・注文ページ | SHADOW SPEED STICK</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
 <style>
@@ -12,34 +12,46 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Noto Sans JP",sans-serif;font-weight:600;color:var(--ink);background:#fff;line-height:1.7}
 header{background:var(--ink);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-header .logo{font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em}
-header .logo span{color:var(--speed)}
-header .who{font-size:13px;color:#ddd}
-header .who button{background:none;border:1px solid #666;color:#ccc;border-radius:4px;padding:3px 10px;margin-left:10px;cursor:pointer;font-family:inherit;font-size:12px}
+header.logo{font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em}
+header.logo span{color:var(--speed)}
+header.who{font-size:13px;color:#ddd}
+header.who button{background:none;border:1px solid #666;color:#ccc;border-radius:4px;padding:3px 10px;margin-left:10px;cursor:pointer;font-family:inherit;font-size:12px}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
 .hero{background:var(--smoke);padding:34px 0 26px}
 .hero h1{font-size:clamp(24px,6vw,34px);font-weight:900;line-height:1.35}
-.hero h1 .yl{background:linear-gradient(transparent 62%, var(--speed) 62%)}
+.hero h1.yl{background:linear-gradient(transparent 62%, var(--speed) 62%)}
 .hero p{font-size:14.5px;color:var(--muted);margin-top:10px}
 section{padding:30px 0}
 h2{font-size:21px;font-weight:900;margin-bottom:16px;border-left:6px solid var(--speed);padding-left:10px}
 .grid{display:grid;gap:16px}
 @media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
 .card{border:2px solid var(--ink);border-radius:10px;padding:24px 22px;background:#fff}
-.card .tag{display:inline-block;font-size:12px;font-weight:900;background:var(--ink);color:var(--speed);padding:4px 10px;border-radius:3px;letter-spacing:.08em}
+.card.tag{display:inline-block;font-size:12px;font-weight:900;background:var(--ink);color:var(--speed);padding:4px 10px;border-radius:3px;letter-spacing:.08em}
 .card h3{font-size:21px;font-weight:900;margin:10px 0 2px}
-.card .p{font-family:"Oswald",sans-serif;font-size:40px;font-weight:700;line-height:1.15}
-.card .p small{font-size:13px;font-family:"Noto Sans JP",sans-serif;font-weight:700}
+.card.p{font-family:"Oswald",sans-serif;font-size:40px;font-weight:700;line-height:1.15}
+.card.p small{font-size:13px;font-family:"Noto Sans JP",sans-serif;font-weight:700}
 .card table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0 16px}
 .card table td{padding:7px 4px;border-bottom:1px solid var(--line)}
 .card table td:last-child{text-align:right;font-weight:900}
-.card .profit{color:#0a7a2f}
-.btn{display:flex;justify-content:center;align-items:center;width:100%;background:var(--speed);color:var(--ink);font-size:17px;font-weight:900;padding:15px;border-radius:6px;text-decoration:none}
+.card.profit{color:#0a7a2f}
+.btn{display:flex;justify-content:center;align-items:center;width:100%;background:var(--speed);color:var(--ink);font-size:17px;font-weight:900;padding:15px;border-radius:6px;text-decoration:none;border:none;cursor:pointer;font-family:inherit}
 .btn:hover{background:var(--ink);color:var(--speed)}
 table.cond{width:100%;border-collapse:collapse;font-size:14.5px}
 table.cond th,table.cond td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
 table.cond th{background:var(--smoke);width:34%;font-weight:900}
 .small{font-size:12.5px;color:var(--muted);line-height:1.8}
+form.f{background:var(--smoke);border:2px solid var(--ink);border-radius:10px;padding:26px 22px}
+form.f label{display:block;font-size:13.5px;font-weight:900;margin:18px 0 6px}
+form.f label:first-child{margin-top:0}
+form.f input,form.f select,form.f textarea{width:100%;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:6px;font-family:inherit;font-weight:600;background:#fff}
+form.f input:focus,form.f select:focus,form.f textarea:focus{outline:2px solid var(--speed);border-color:var(--ink)}
+.est{background:#fff;border:1.5px solid var(--ink);border-radius:8px;padding:16px 18px;margin-top:22px}
+.est table{width:100%;border-collapse:collapse;font-size:15px}
+.est td{padding:6px 2px;border-bottom:1px solid var(--line)}
+.est td:last-child{text-align:right;font-weight:900}
+.est tr.total td{border-bottom:none;font-size:18px;padding-top:10px}
+.est.free-note{font-size:12.5px;color:#0a7a2f;font-weight:900;margin-top:6px}
+form.f.btn{margin-top:22px}
 footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-align:center;margin-top:20px}
 </style>
 </head>
@@ -50,13 +62,13 @@ footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-al
 </header>
 <div class="hero">
 <div class="wrap">
-<h1>店舗様専用 <span class="yl">卸注文ページ</span></h1>
-<p>SHADOW SPEED STICK（100cm／180g／イエロー・ブラック）の店舗様向け卸販売ページです。1本からご注文いただけます。カラーと数量は決済ページでお選びください。</p>
+<h1>店舗様専用 <span class="yl">お問い合わせ・注文ページ</span></h1>
+<p>SHADOW SPEED STICK（100cm／180g／イエロー・ブラック）の店舗様向け卸販売ページです。下のフォームからご希望のモデルと本数をお送りください。料金の目安はその場で表示されます。内容を確認のうえ、決済フォーム（Square）をメールでお送りします。</p>
 </div>
 </div>
 <section>
 <div class="wrap">
-<h2>卸価格でのご注文</h2>
+<h2>卸価格</h2>
 <div class="grid">
 <div class="card">
 <span class="tag">即日発送｜在庫あり</span>
@@ -67,7 +79,7 @@ footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-al
 <tr><td>店舗様の利益（1本あたり）</td><td class="profit">¥2,920</td></tr>
 <tr><td>発送</td><td>お支払い確認後、即日〜翌営業日</td></tr>
 </table>
-<a class="btn" href="#" data-link="nologo">注文する（Square決済）</a>
+<a class="btn pick" href="#inquiry" data-model="nologo">このモデルで問い合わせる</a>
 </div>
 <div class="card">
 <span class="tag">先行予約｜12月15日発売</span>
@@ -78,18 +90,58 @@ footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-al
 <tr><td>店舗様の利益（1本あたり）</td><td class="profit">¥2,920</td></tr>
 <tr><td>発送</td><td>2026年12月15日（火）から順次発送</td></tr>
 </table>
-<a class="btn" href="#" data-link="logo">注文する（Square決済）</a>
+<a class="btn pick" href="#inquiry" data-model="logo">このモデルで問い合わせる</a>
 </div>
 </div>
 </div>
 </section>
+<section style="padding-top:0" id="inquiry">
+<div class="wrap">
+<h2>お問い合わせ・注文フォーム</h2>
+<form class="f" id="inqForm">
+<label for="fShop">店舗名</label>
+<input type="text" id="fShop" required>
+<label for="fName">ご担当者名</label>
+<input type="text" id="fName" required>
+<label for="fMail">メールアドレス（決済フォームの送り先）</label>
+<input type="email" id="fMail" required>
+<label for="fModel">モデル</label>
+<select id="fModel">
+<option value="nologo">ロゴなしモデル（下代 2,980円／本）</option>
+<option value="logo">ロゴありモデル（下代 3,980円／本）</option>
+</select>
+<label for="fColor">カラー</label>
+<select id="fColor">
+<option value="イエロー">イエロー</option>
+<option value="ブラック">ブラック</option>
+<option value="両方（備考に内訳）">両方（備考に内訳をご記入ください）</option>
+</select>
+<label for="fQty">本数</label>
+<input type="number" id="fQty" min="1" value="5" required>
+<div class="est">
+<table>
+<tr><td>単価（下代・税込）</td><td id="eUnit">¥2,980</td></tr>
+<tr><td>小計</td><td id="eSub">¥14,900</td></tr>
+<tr><td>送料（15,000円以上で無料）</td><td id="eShip">¥1,200</td></tr>
+<tr class="total"><td>合計（目安・税込）</td><td id="eTotal">¥16,100</td></tr>
+</table>
+<div class="free-note" id="eNote"></div>
+</div>
+<label for="fMemo">備考（任意）</label>
+<textarea id="fMemo" rows="3" placeholder="カラーの内訳、納品希望日、その他のご相談など"></textarea>
+<button type="submit" class="btn">この内容で問い合わせる</button>
+<p class="small" style="margin-top:12px">※ボタンを押すとメールアプリが開き、入力内容が入ったメールが用意されます。そのまま送信してください。送信後、内容を確認のうえ決済フォーム（Square）のURLをメールでお送りします。※合計は目安です。正式な金額は決済フォームでご確認ください。</p>
+</form>
+</div>
+</section>
 <section style="padding-top:0">
 <div class="wrap">
-<h2>ご注文条件</h2>
+<h2>ご注文の流れ・条件</h2>
 <table class="cond">
+<tr><th>ご注文の流れ</th><td>1. 上のフォームからお問い合わせ → 2. 当店から決済フォーム（Square）のURLをメールで送付 → 3. 決済フォームでお支払い → 4. 発送</td></tr>
 <tr><th>最低注文数</th><td>1本からご注文いただけます</td></tr>
 <tr><th>送料</th><td>ご注文金額 15,000円以上で無料／15,000円未満は 1,200円（税込）</td></tr>
-<tr><th>お支払い方法</th><td>クレジットカード決済（Square）。各商品の「注文する」ボタンから決済ページへ進み、カラーと数量をお選びください</td></tr>
+<tr><th>お支払い方法</th><td>クレジットカード決済（Square）。決済フォームはメールでお送りします</td></tr>
 <tr><th>発送</th><td>ロゴなしモデル: お支払い確認後、即日〜翌営業日に発送／ロゴありモデル: 2026年12月15日（火）から順次発送（ゆうパック）</td></tr>
 <tr><th>販売価格について</th><td>店頭・オンラインでの販売価格は、小売価格（ロゴなし 5,900円／ロゴあり 6,900円・いずれも税込）を目安にお願いいたします</td></tr>
 <tr><th>お問い合わせ</th><td>合同会社 ONE FOR DREAM（onefordream72@gmail.com／070-8366-0392）</td></tr>
@@ -100,11 +152,61 @@ footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-al
 <footer>&copy; 2026 SHADOW SPEED STICK / 合同会社 ONE FOR DREAM</footer>
 <script>
 var shop = sessionStorage.getItem('sss_shop');
-if (!shop) { location.href = 'partners.html'; }
-document.getElementById('shopName').textContent = shop ? (shop + ' ログイン中') : '';
+if (!shop) { location.href = 'partners.html';}
+document.getElementById('shopName').textContent = shop? (shop + ' ログイン中'): '';
+if (shop && shop!== 'テスト店舗様') { document.getElementById('fShop').value = shop;}
 document.getElementById('logout').addEventListener('click', function(){
-  sessionStorage.removeItem('sss_shop');
-  location.href = 'partners.html';
+sessionStorage.removeItem('sss_shop');
+location.href = 'partners.html';
+});
+var PRICES = { nologo: 2980, logo: 3980};
+var NAMES = { nologo: 'ロゴなしモデル', logo: 'ロゴありモデル'};
+function yen(n){ return '¥' + n.toLocaleString('ja-JP');}
+function calc(){
+var m = document.getElementById('fModel').value;
+var q = Math.max(1, parseInt(document.getElementById('fQty').value || '1', 10));
+var unit = PRICES[m];
+var sub = unit * q;
+var ship = sub >= 15000? 0: 1200;
+document.getElementById('eUnit').textContent = yen(unit);
+document.getElementById('eSub').textContent = yen(sub);
+document.getElementById('eShip').textContent = ship === 0? '無料': yen(ship);
+document.getElementById('eTotal').textContent = yen(sub + ship);
+document.getElementById('eNote').textContent = ship === 0? '送料無料の対象です。': ('あと ' + yen(15000 - sub) + ' で送料無料になります。');
+}
+document.getElementById('fModel').addEventListener('change', calc);
+document.getElementById('fQty').addEventListener('input', calc);
+calc();
+document.querySelectorAll('.pick').forEach(function(a){
+a.addEventListener('click', function(){
+document.getElementById('fModel').value = a.dataset.model;
+calc();
+});
+});
+document.getElementById('inqForm').addEventListener('submit', function(e){
+e.preventDefault();
+var m = document.getElementById('fModel').value;
+var q = Math.max(1, parseInt(document.getElementById('fQty').value || '1', 10));
+var unit = PRICES[m];
+var sub = unit * q;
+var ship = sub >= 15000? 0: 1200;
+var lines = [
+'SHADOW SPEED STICK 店舗様お問い合わせ',
+'',
+'店舗名: ' + document.getElementById('fShop').value,
+'ご担当者名: ' + document.getElementById('fName').value,
+'メールアドレス: ' + document.getElementById('fMail').value,
+'モデル: ' + NAMES[m],
+'カラー: ' + document.getElementById('fColor').value,
+'本数: ' + q + '本',
+'単価（下代・税込）: ' + yen(unit),
+'小計: ' + yen(sub),
+'送料: ' + (ship === 0? '無料': yen(ship)),
+'合計（目安・税込）: ' + yen(sub + ship),
+'備考: ' + (document.getElementById('fMemo').value || 'なし')
+];
+var subject = '' + document.getElementById('fShop').value + '｜SPEED STICK ' + NAMES[m] + ' ' + q + '本';
+location.href = 'mailto:onefordream72@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
 });
 </script>
 </body>
