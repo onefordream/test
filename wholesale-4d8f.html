@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>店舗様専用 卸注文ページ | SHADOW SPEED STICK</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0a0a0a;--speed:#f5d300;--smoke:#f4f4f1;--line:#e5e5e0;--muted:#5c5c58;--maxw:1060px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Sans JP",sans-serif;font-weight:600;color:var(--ink);background:#fff;line-height:1.7}
+header{background:var(--ink);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+header .logo{font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em}
+header .logo span{color:var(--speed)}
+header .who{font-size:13px;color:#ddd}
+header .who button{background:none;border:1px solid #666;color:#ccc;border-radius:4px;padding:3px 10px;margin-left:10px;cursor:pointer;font-family:inherit;font-size:12px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+.hero{background:var(--smoke);padding:34px 0 26px}
+.hero h1{font-size:clamp(24px,6vw,34px);font-weight:900;line-height:1.35}
+.hero h1 .yl{background:linear-gradient(transparent 62%, var(--speed) 62%)}
+.hero p{font-size:14.5px;color:var(--muted);margin-top:10px}
+section{padding:30px 0}
+h2{font-size:21px;font-weight:900;margin-bottom:16px;border-left:6px solid var(--speed);padding-left:10px}
+.grid{display:grid;gap:16px}
+@media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+.card{border:2px solid var(--ink);border-radius:10px;padding:24px 22px;background:#fff}
+.card .tag{display:inline-block;font-size:12px;font-weight:900;background:var(--ink);color:var(--speed);padding:4px 10px;border-radius:3px;letter-spacing:.08em}
+.card h3{font-size:21px;font-weight:900;margin:10px 0 2px}
+.card .p{font-family:"Oswald",sans-serif;font-size:40px;font-weight:700;line-height:1.15}
+.card .p small{font-size:13px;font-family:"Noto Sans JP",sans-serif;font-weight:700}
+.card table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0 16px}
+.card table td{padding:7px 4px;border-bottom:1px solid var(--line)}
+.card table td:last-child{text-align:right;font-weight:900}
+.card .profit{color:#0a7a2f}
+.btn{display:flex;justify-content:center;align-items:center;width:100%;background:var(--speed);color:var(--ink);font-size:17px;font-weight:900;padding:15px;border-radius:6px;text-decoration:none}
+.btn:hover{background:var(--ink);color:var(--speed)}
+table.cond{width:100%;border-collapse:collapse;font-size:14.5px}
+table.cond th,table.cond td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+table.cond th{background:var(--smoke);width:34%;font-weight:900}
+.small{font-size:12.5px;color:var(--muted);line-height:1.8}
+footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-align:center;margin-top:20px}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">SHADOW <span>SPEED STICK</span></div>
+<div class="who"><span id="shopName"></span><button id="logout">ログアウト</button></div>
+</header>
+<div class="hero">
+<div class="wrap">
+<h1>店舗様専用 <span class="yl">卸注文ページ</span></h1>
+<p>SHADOW SPEED STICK（100cm／180g／イエロー・ブラック）の店舗様向け卸販売ページです。1本からご注文いただけます。カラーと数量は決済ページでお選びください。</p>
+</div>
+</div>
+<section>
+<div class="wrap">
+<h2>卸価格でのご注文</h2>
+<div class="grid">
+<div class="card">
+<span class="tag">即日発送｜在庫あり</span>
+<h3>ロゴなしモデル</h3>
+<div class="p">¥2,980<small> 税込／1本</small></div>
+<table>
+<tr><td>小売価格</td><td>¥5,900</td></tr>
+<tr><td>店舗様の利益（1本あたり）</td><td class="profit">¥2,920</td></tr>
+<tr><td>発送</td><td>お支払い確認後、即日〜翌営業日</td></tr>
+</table>
+<a class="btn" href="#" data-link="nologo">注文する（Square決済）</a>
+</div>
+<div class="card">
+<span class="tag">先行予約｜12月15日発売</span>
+<h3>ロゴありモデル</h3>
+<div class="p">¥3,980<small> 税込／1本</small></div>
+<table>
+<tr><td>小売価格</td><td>¥6,900</td></tr>
+<tr><td>店舗様の利益（1本あたり）</td><td class="profit">¥2,920</td></tr>
+<tr><td>発送</td><td>2026年12月15日（火）から順次発送</td></tr>
+</table>
+<a class="btn" href="#" data-link="logo">注文する（Square決済）</a>
+</div>
+</div>
+</div>
+</section>
+<section style="padding-top:0">
+<div class="wrap">
+<h2>ご注文条件</h2>
+<table class="cond">
+<tr><th>最低注文数</th><td>1本からご注文いただけます</td></tr>
+<tr><th>送料</th><td>ご注文金額 15,000円以上で無料／15,000円未満は 1,200円（税込）</td></tr>
+<tr><th>お支払い方法</th><td>クレジットカード決済（Square）。各商品の「注文する」ボタンから決済ページへ進み、カラーと数量をお選びください</td></tr>
+<tr><th>発送</th><td>ロゴなしモデル: お支払い確認後、即日〜翌営業日に発送／ロゴありモデル: 2026年12月15日（火）から順次発送（ゆうパック）</td></tr>
+<tr><th>販売価格について</th><td>店頭・オンラインでの販売価格は、小売価格（ロゴなし 5,900円／ロゴあり 6,900円・いずれも税込）を目安にお願いいたします</td></tr>
+<tr><th>お問い合わせ</th><td>合同会社 ONE FOR DREAM（onefordream72@gmail.com／070-8366-0392）</td></tr>
+</table>
+<p class="small" style="margin-top:14px">※このページは店舗様専用です。URLやログイン情報の第三者への共有はご遠慮ください。※販売事業者の情報は<a href="index.html#tokushoho">特定商取引法に基づく表記</a>をご確認ください。</p>
+</div>
+</section>
+<footer>&copy; 2026 SHADOW SPEED STICK / 合同会社 ONE FOR DREAM</footer>
+<script>
+var shop = sessionStorage.getItem('sss_shop');
+if (!shop) { location.href = 'partners.html'; }
+document.getElementById('shopName').textContent = shop ? (shop + ' ログイン中') : '';
+document.getElementById('logout').addEventListener('click', function(){
+  sessionStorage.removeItem('sss_shop');
+  location.href = 'partners.html';
+});
+</script>
+</body>
+</html>
