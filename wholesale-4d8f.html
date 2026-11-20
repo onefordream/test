@@ -12,46 +12,44 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:"Noto Sans JP",sans-serif;font-weight:600;color:var(--ink);background:#fff;line-height:1.7}
 header{background:var(--ink);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-header.logo{font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em}
-header.logo span{color:var(--speed)}
-header.who{font-size:13px;color:#ddd}
-header.who button{background:none;border:1px solid #666;color:#ccc;border-radius:4px;padding:3px 10px;margin-left:10px;cursor:pointer;font-family:inherit;font-size:12px}
+header .logo{font-family:"Oswald",sans-serif;font-size:19px;letter-spacing:.06em}
+header .logo span{color:var(--speed)}
+header .who{font-size:13px;color:#ddd}
+header .who button{background:none;border:1px solid #666;color:#ccc;border-radius:4px;padding:3px 10px;margin-left:10px;cursor:pointer;font-family:inherit;font-size:12px}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
 .hero{background:var(--smoke);padding:34px 0 26px}
 .hero h1{font-size:clamp(24px,6vw,34px);font-weight:900;line-height:1.35}
-.hero h1.yl{background:linear-gradient(transparent 62%, var(--speed) 62%)}
+.hero h1 .yl{background:linear-gradient(transparent 62%, var(--speed) 62%)}
 .hero p{font-size:14.5px;color:var(--muted);margin-top:10px}
 section{padding:30px 0}
 h2{font-size:21px;font-weight:900;margin-bottom:16px;border-left:6px solid var(--speed);padding-left:10px}
 .grid{display:grid;gap:16px}
 @media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
 .card{border:2px solid var(--ink);border-radius:10px;padding:24px 22px;background:#fff}
-.card.tag{display:inline-block;font-size:12px;font-weight:900;background:var(--ink);color:var(--speed);padding:4px 10px;border-radius:3px;letter-spacing:.08em}
+.card .tag{display:inline-block;font-size:12px;font-weight:900;background:var(--ink);color:var(--speed);padding:4px 10px;border-radius:3px;letter-spacing:.08em}
 .card h3{font-size:21px;font-weight:900;margin:10px 0 2px}
-.card.p{font-family:"Oswald",sans-serif;font-size:40px;font-weight:700;line-height:1.15}
-.card.p small{font-size:13px;font-family:"Noto Sans JP",sans-serif;font-weight:700}
+.card .p{font-family:"Oswald",sans-serif;font-size:40px;font-weight:700;line-height:1.15}
+.card .p small{font-size:13px;font-family:"Noto Sans JP",sans-serif;font-weight:700}
 .card table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0 16px}
 .card table td{padding:7px 4px;border-bottom:1px solid var(--line)}
 .card table td:last-child{text-align:right;font-weight:900}
-.card.profit{color:#0a7a2f}
+.card .profit{color:#0a7a2f}
 .btn{display:flex;justify-content:center;align-items:center;width:100%;background:var(--speed);color:var(--ink);font-size:17px;font-weight:900;padding:15px;border-radius:6px;text-decoration:none;border:none;cursor:pointer;font-family:inherit}
 .btn:hover{background:var(--ink);color:var(--speed)}
 table.cond{width:100%;border-collapse:collapse;font-size:14.5px}
 table.cond th,table.cond td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
 table.cond th{background:var(--smoke);width:34%;font-weight:900}
 .small{font-size:12.5px;color:var(--muted);line-height:1.8}
-form.f{background:var(--smoke);border:2px solid var(--ink);border-radius:10px;padding:26px 22px}
-form.f label{display:block;font-size:13.5px;font-weight:900;margin:18px 0 6px}
-form.f label:first-child{margin-top:0}
-form.f input,form.f select,form.f textarea{width:100%;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:6px;font-family:inherit;font-weight:600;background:#fff}
-form.f input:focus,form.f select:focus,form.f textarea:focus{outline:2px solid var(--speed);border-color:var(--ink)}
+.fbox{background:var(--smoke);border:2px solid var(--ink);border-radius:10px;padding:26px 22px}
+.fbox label{display:block;font-size:13.5px;font-weight:900;margin:18px 0 6px}
+.fbox input,.fbox select{width:100%;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:6px;font-family:inherit;font-weight:600;background:#fff}
+.fbox input:focus,.fbox select:focus{outline:2px solid var(--speed);border-color:var(--ink)}
 .est{background:#fff;border:1.5px solid var(--ink);border-radius:8px;padding:16px 18px;margin-top:22px}
 .est table{width:100%;border-collapse:collapse;font-size:15px}
 .est td{padding:6px 2px;border-bottom:1px solid var(--line)}
 .est td:last-child{text-align:right;font-weight:900}
 .est tr.total td{border-bottom:none;font-size:18px;padding-top:10px}
-.est.free-note{font-size:12.5px;color:#0a7a2f;font-weight:900;margin-top:6px}
-form.f.btn{margin-top:22px}
+.est .free-note{font-size:12.5px;color:#0a7a2f;font-weight:900;margin-top:6px}
 footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-align:center;margin-top:20px}
 </style>
 </head>
@@ -63,7 +61,7 @@ footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-al
 <div class="hero">
 <div class="wrap">
 <h1>店舗様専用 <span class="yl">お申し込みページ</span></h1>
-<p>SHADOW SPEED STICK（100cm／180g／イエロー・ブラック）の店舗様向け卸販売ページです。下のフォームからお申し込みください。料金の目安はその場で表示されます。お申し込み後、内容を確認のうえ、決済リンクをメールでお送りします。</p>
+<p>SHADOW SPEED STICK（100cm／180g／イエロー・ブラック）の店舗様向け卸販売ページです。料金の目安を確認のうえ、下のお申し込みフォームからお申し込みください。お申し込み後、内容を確認のうえ、決済リンクをメールでお送りします。</p>
 </div>
 </div>
 <section>
@@ -98,32 +96,15 @@ footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-al
 <section style="padding-top:0" id="inquiry">
 <div class="wrap">
 <h2>お申し込みフォーム</h2>
-<form class="f" id="inqForm" action="https://formsubmit.co/onefordream72@gmail.com" method="POST">
-<input type="hidden" name="_subject" value="SHADOW SPEED STICK 卸注文">
-<input type="hidden" name="_next" value="https://onefordream.github.io/test/wholesale-thanks.html">
-<input type="hidden" name="_template" value="table">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="単価（目安・税込）" id="hUnit">
-<input type="hidden" name="小計（目安・税込）" id="hSub">
-<input type="hidden" name="送料（目安）" id="hShip">
-<input type="hidden" name="合計（目安・税込）" id="hTotal">
-<label for="fShop">店舗名</label>
-<input type="text" id="fShop" name="店舗名" required>
-<label for="fName">ご担当者名</label>
-<input type="text" id="fName" name="ご担当者名" required>
-<label for="fAddr">住所（お届け先）</label>
-<textarea id="fAddr" name="住所" rows="2" placeholder="〒000-0000 都道府県 市区町村 番地 建物名など" required></textarea>
-<label for="fTel">電話番号</label>
-<input type="tel" id="fTel" name="電話番号" required>
-<label for="fMail">メールアドレス（決済リンクの送り先）</label>
-<input type="email" id="fMail" name="_replyto" required>
+<div class="fbox">
+<div style="font-weight:900;font-size:16px">料金目安シミュレーター</div>
 <label for="fModel">欲しい商品</label>
-<select id="fModel" name="商品">
-<option value="ロゴなしモデル（下代 2,980円／本）">ロゴなしモデル（下代 2,980円／本）</option>
-<option value="ロゴありモデル（下代 3,980円／本）">ロゴありモデル（下代 3,980円／本）</option>
+<select id="fModel">
+<option value="nologo">ロゴなしモデル（下代 2,980円／本）</option>
+<option value="logo">ロゴありモデル（下代 3,980円／本）</option>
 </select>
 <label for="fQty">本数</label>
-<input type="number" id="fQty" name="本数" min="1" value="5" required>
+<input type="number" id="fQty" min="1" value="5">
 <div class="est">
 <table>
 <tr><td>単価（下代・税込）</td><td id="eUnit">¥2,980</td></tr>
@@ -133,16 +114,17 @@ footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-al
 </table>
 <div class="free-note" id="eNote"></div>
 </div>
-<button type="submit" class="btn">申し込む</button>
-<p class="small" style="margin-top:12px">※カラー（イエロー／ブラック）は、後ほどお送りする決済フォームでお選びいただけます。※合計は目安です。正式な金額は決済フォームでご確認ください。</p>
-</form>
+<p class="small" style="margin-top:12px">※目安を確認したら、下のお申し込みフォームに同じ内容を入力して送信してください。※カラー（イエロー／ブラック）は、後ほどお送りする決済リンクでお選びいただけます。※合計は目安です。正式な金額は決済リンクでご確認ください。</p>
+</div>
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdC06mEOuovQ5Gr5DwNGwf2Qx5DbvAoSIhHBYm-1EBwtXGSGA/viewform?embedded=true" width="100%" height="1250" frameborder="0" marginheight="0" marginwidth="0" style="border:2px solid #0a0a0a;border-radius:10px;background:#fff;margin-top:18px" title="SHADOW SPEED STICK 店舗様お申し込みフォーム">読み込んでいます…</iframe>
+<p class="small" style="margin-top:10px">フォームが表示されない場合は、<a href="https://docs.google.com/forms/d/e/1FAIpQLSdC06mEOuovQ5Gr5DwNGwf2Qx5DbvAoSIhHBYm-1EBwtXGSGA/viewform" target="_blank" rel="noopener">こちらから開いてください</a>。</p>
 </div>
 </section>
 <section style="padding-top:0">
 <div class="wrap">
 <h2>ご注文の流れ・条件</h2>
 <table class="cond">
-<tr><th>ご注文の流れ</th><td>1. 上のフォームからお申し込み（完了画面が表示されます） → 2. 当店から決済リンク（Square）をメールで送付 → 3. 決済リンクでお支払い（カラーを選択） → 4. 発送</td></tr>
+<tr><th>ご注文の流れ</th><td>1. 上のフォームからお申し込み（送信後に完了メッセージが表示されます） → 2. 当店から決済リンク（Square）をメールで送付 → 3. 決済リンクでお支払い（カラーを選択） → 4. 発送</td></tr>
 <tr><th>最低注文数</th><td>1本からご注文いただけます</td></tr>
 <tr><th>送料</th><td>5本以上のご注文で無料／5本未満は 1,200円（税込）</td></tr>
 <tr><th>お支払い方法</th><td>クレジットカード決済（Square）。決済リンクはメールでお送りします</td></tr>
@@ -156,39 +138,34 @@ footer{background:var(--ink);color:#999;padding:26px 20px;font-size:12px;text-al
 <footer>&copy; 2026 SHADOW SPEED STICK / 合同会社 ONE FOR DREAM</footer>
 <script>
 var shop = sessionStorage.getItem('sss_shop');
-if (!shop) { location.href = 'partners.html';}
-document.getElementById('shopName').textContent = shop? (shop + ' ログイン中'): '';
-if (shop && shop!== 'テスト店舗様') { document.getElementById('fShop').value = shop;}
+if (!shop) { location.href = 'partners.html'; }
+document.getElementById('shopName').textContent = shop ? (shop + ' ログイン中') : '';
 document.getElementById('logout').addEventListener('click', function(){
-sessionStorage.removeItem('sss_shop');
-location.href = 'partners.html';
+  sessionStorage.removeItem('sss_shop');
+  location.href = 'partners.html';
 });
-function yen(n){ return '¥' + n.toLocaleString('ja-JP');}
+function yen(n){ return '¥' + n.toLocaleString('ja-JP'); }
 function calc(){
-var sel = document.getElementById('fModel');
-var unit = sel.value.indexOf('ロゴあり') === 0? 3980: 2980;
-var q = Math.max(1, parseInt(document.getElementById('fQty').value || '1', 10));
-var sub = unit * q;
-var ship = q >= 5? 0: 1200;
-document.getElementById('eUnit').textContent = yen(unit);
-document.getElementById('eSub').textContent = yen(sub);
-document.getElementById('eShip').textContent = ship === 0? '無料': yen(ship);
-document.getElementById('eTotal').textContent = yen(sub + ship);
-document.getElementById('eNote').textContent = ship === 0? '送料無料の対象です（5本以上）。': ('あと ' + (5 - q) + ' 本で送料無料になります。');
-document.getElementById('hUnit').value = yen(unit);
-document.getElementById('hSub').value = yen(sub);
-document.getElementById('hShip').value = ship === 0? '無料': yen(ship);
-document.getElementById('hTotal').value = yen(sub + ship);
+  var sel = document.getElementById('fModel');
+  var unit = sel.value === 'logo' ? 3980 : 2980;
+  var q = Math.max(1, parseInt(document.getElementById('fQty').value || '1', 10));
+  var sub = unit * q;
+  var ship = q >= 5 ? 0 : 1200;
+  document.getElementById('eUnit').textContent = yen(unit);
+  document.getElementById('eSub').textContent = yen(sub);
+  document.getElementById('eShip').textContent = ship === 0 ? '無料' : yen(ship);
+  document.getElementById('eTotal').textContent = yen(sub + ship);
+  document.getElementById('eNote').textContent = ship === 0 ? '送料無料の対象です（5本以上）。' : ('あと ' + (5 - q) + ' 本で送料無料になります。');
 }
 document.getElementById('fModel').addEventListener('change', calc);
 document.getElementById('fQty').addEventListener('input', calc);
 calc();
 document.querySelectorAll('.pick').forEach(function(a){
-a.addEventListener('click', function(){
-var sel = document.getElementById('fModel');
-sel.selectedIndex = a.dataset.model === 'logo'? 1: 0;
-calc();
-});
+  a.addEventListener('click', function(){
+    var sel = document.getElementById('fModel');
+    sel.selectedIndex = a.dataset.model === 'logo' ? 1 : 0;
+    calc();
+  });
 });
 </script>
 </body>
