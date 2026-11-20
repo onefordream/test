@@ -146,6 +146,8 @@ section{padding:64px 0}
 .price-mega{font-family:"Oswald",sans-serif;font-size:clamp(58px,15vw,84px);font-weight:700;line-height:1}
 .price-mega small{font-size:16px;font-family:"Noto Sans JP",sans-serif;font-weight:700}
 .buy-card{border:2px solid var(--ink);border-radius:10px;padding:24px 22px;margin-bottom:16px;background:#fff}
+.opt-check{display:flex;gap:10px;align-items:flex-start;background:#fff8d6;border:1px solid #e8d44d;border-radius:8px;padding:12px 14px;margin:0 0 14px;cursor:pointer;font-size:14px;line-height:1.6;font-weight:600}
+.opt-check input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:#111}
 .buy-card.set{border-color:#c9a400;background:#fffdf2}
 .buy-card.tag{display:inline-block;font-size:12px;font-weight:900;background:var(--ink);color:var(--speed);padding:4px 10px;border-radius:3px;letter-spacing:.08em}
 .buy-card.set.tag{background:#c9a400;color:#fff}
@@ -294,42 +296,33 @@ footer a{text-decoration:underline}
 <div class="ship">
 <div class="s"><div class="t">送料（1点）</div><div class="v">¥1,200</div></div>
 <div class="s"><div class="t">送料（2点以上・同梱）</div><div class="v free">無料</div></div>
+<div class="s"><div class="t">送料（メニュー作成オプション付き）</div><div class="v free">無料</div></div>
 </div>
 </div>
 <div>
 <div class="buy-card">
 <span class="tag">即日発送｜在庫あり</span>
 <h3>ロゴなしモデル</h3>
-<div class="p">¥5,900<small> 税込</small></div>
+<div class="p"><span class="price-val">¥5,900</span><small> 税込</small></div>
 <ul>
 <li>ロゴなし（無地）モデル。仕様はロゴありと同じ（180g／100cm）</li>
 <li>お支払い確認後、即日〜翌営業日に発送します</li>
 <li>先行予約特典は付きません</li>
 </ul>
-<a class="btn btn-buy" href="https://square.link/u/2c75zDsK">購入する（Square決済）</a>
+<label class="opt-check"><input type="checkbox" class="menu-opt" data-price="¥13,800" data-base="¥5,900" data-link="https://square.link/u/iI7p0nEb" data-baselink="https://square.link/u/2c75zDsK"> <span><b>オプション：+7,900円で、あなた専用の練習メニューを作成します</b>（先着20名）<br>チェックを入れると合計13,800円・<b>送料無料</b>になります</span></label>
+<a class="btn btn-buy buy-link" href="https://square.link/u/2c75zDsK">購入する（Square決済）</a>
 </div>
 <div class="buy-card">
 <span class="tag">先行予約｜特典付き</span>
 <h3>ロゴありモデル</h3>
-<div class="p">¥6,900<small> 税込</small></div>
+<div class="p"><span class="price-val">¥6,900</span><small> 税込</small></div>
 <ul>
 <li>ロゴ入りモデル／色は決済ページで選択</li>
 <li>先行予約特典：悩み別・使い方ガイド付き</li>
 <li>12月15日（火）から順次発送</li>
 </ul>
-<a class="btn btn-buy" href="https://square.link/u/bNeMpPtq?src=sheet">先行予約する（Square決済）</a>
-</div>
-<div class="buy-card set">
-<span class="tag">先着20件</span>
-<h3>スティック＋スイング診断セット</h3>
-<div class="p">¥16,200<small> 税込</small></div>
-<ul>
-<li>ロゴありモデル（6,900円）＋影山拓真のスイング動画診断（9,300円相当）。発送は12月15日から</li>
-<li>ご自身のスイング動画を送るだけ。直すべき点と練習法を音声または動画で返信（3日以内目安）</li>
-<li>先行予約特典（悩み別・使い方ガイド）も付きます</li>
-</ul>
-<a class="btn btn-set" href="https://onefordream.github.io/test/order.html">セットを申し込む（専用フォーム）</a>
-<p class="small" style="margin-top:10px">※セットのみ、専用フォームからのお申し込みとなります。</p>
+<label class="opt-check"><input type="checkbox" class="menu-opt" data-price="¥14,800" data-base="¥6,900" data-link="https://square.link/u/QEn1vRei" data-baselink="https://square.link/u/bNeMpPtq?src=sheet"> <span><b>オプション：+7,900円で、あなた専用の練習メニューを作成します</b>（先着20名）<br>チェックを入れると合計14,800円・<b>送料無料</b>になります</span></label>
+<a class="btn btn-buy buy-link" href="https://square.link/u/bNeMpPtq?src=sheet">先行予約する（Square決済）</a>
 </div>
 </div>
 </div>
@@ -342,11 +335,11 @@ footer a{text-decoration:underline}
 <div class="eyebrow">HOW TO ORDER</div>
 <h2 class="sec-title">ご購入の流れは、<span class="yl">3ステップ。</span></h2>
 <div class="flow">
-<div class="f"><div class="n">1</div><div class="t">モデルを選ぶ</div><p>ご希望のモデルのボタンから、決済ページ（Square）または専用フォームへ進んでください。</p></div>
+<div class="f"><div class="n">1</div><div class="t">モデルを選ぶ</div><p>ご希望のモデルのボタンから、決済ページ（Square）へ進んでください。練習メニュー作成をご希望の場合は、カードのオプションにチェックを入れてから進んでください。</p></div>
 <div class="f"><div class="n">2</div><div class="t">色・住所・支払いを入力</div><p>決済ページで、色・数量・お届け先住所・お支払い情報をご入力ください。</p></div>
 <div class="f"><div class="n">3</div><div class="t">発送</div><p>ロゴなしモデルはお支払い確認後、即日〜翌営業日に発送。ロゴありモデルは2026年12月15日（火）からご注文順に発送します。特典は発送と同時期にメールでお送りします。</p></div>
 </div>
-<p class="small" style="margin-top:16px">※お支払いの確認が取れるまでは予約確定となりません。※お支払い方法はクレジットカード決済（Square）のみです（専用フォーム経由の場合も、決済はSquareです）。</p>
+<p class="small" style="margin-top:16px">※お支払いの確認が取れるまでは予約確定となりません。※お支払い方法はクレジットカード決済（Square）のみです。※練習メニュー作成をお付けの場合、購入後にアンケートのご案内をメールでお送りします。ご回答をもとに作成し、アンケートのご回答から1週間以内を目安にPDFでお送りします。</p>
 </div>
 </section>
 
@@ -365,11 +358,11 @@ footer a{text-decoration:underline}
 </details>
 <details>
 <summary>送料はいくらですか？</summary>
-<p>1点のご注文で1,200円（税込）です。2点以上のご注文は送料無料となります（同一のお届け先への同梱発送に限ります）。お届け先が分かれる場合は、1点ごとのご注文として送料がかかります。</p>
+<p>1点のご注文で1,200円（税込）です。2点以上のご注文と、練習メニュー作成オプションをお付けのご注文は送料無料となります（2点以上の場合は、同一のお届け先への同梱発送に限ります）。お届け先が分かれる場合は、1点ごとのご注文として送料がかかります。</p>
 </details>
 <details>
 <summary>色は選べますか？</summary>
-<p>カラーはイエローとブラックの2色です。スティック単品は決済ページ（Square）でお選びください。診断つきセットは専用フォームでお申し込み後、ご案内します。</p>
+<p>カラーはイエローとブラックの2色です。決済ページ（Square）でお選びください。</p>
 </details>
 <details>
 <summary>先行予約特典とは何ですか？</summary>
@@ -380,8 +373,8 @@ footer a{text-decoration:underline}
 <p>決済ページでのお支払いが当社で確認できた時点で注文確定となります。</p>
 </details>
 <details>
-<summary>スイング診断つきセットを買った場合、診断はどのように行われますか？</summary>
-<p>お申し込み完了後、診断用のスイング動画の送り方をメールでご案内します。スマートフォンで撮影した動画で問題ありません。動画をお送りいただいた後、3日以内を目安に診断結果を音声または動画でお返しします。</p>
+<summary>練習メニュー作成オプションとは何ですか？</summary>
+<p>購入時にチェックを入れると（+7,900円・送料無料）、あなた専用の練習メニューを作成します。購入後にご案内するアンケート（悩み・練習頻度・目標）へのご回答と、任意でお送りいただくスイング動画をもとに、影山拓真が監修して作成し、PDFでお送りします（アンケートのご回答から1週間以内が目安）。先着20名までとなります。全員共通の使い方ガイドとは別に、あなたの課題に合わせて組む専用メニューです。</p>
 </details>
 </div>
 </section>
@@ -398,17 +391,17 @@ footer a{text-decoration:underline}
 <dt>電話番号</dt><dd>070-8366-0392</dd>
 <dt>メールアドレス</dt><dd>onefordream72@gmail.com</dd>
 <dt>販売商品・価格（いずれも税込）</dt>
-<dd>・SHADOW SPEED STICK（ロゴなしモデル）: 5,900円<br>・SHADOW SPEED STICK（ロゴありモデル）: 6,900円<br>・SHADOW SPEED STICK ＋ スイング診断セット（ロゴありモデル）: 16,200円（先着20件）</dd>
+<dd>・SHADOW SPEED STICK（ロゴなしモデル）: 5,900円<br>・SHADOW SPEED STICK（ロゴありモデル）: 6,900円<br>・オリジナル練習メニュー作成（オプション）: 7,900円（先着20名。スティックとの合計はロゴなしモデル 13,800円／ロゴありモデル 14,800円となり、いずれも送料無料です）</dd>
 <dt>予約販売について</dt>
-<dd>ロゴありモデルおよび同診断セットは予約販売です。先行予約期間中にお申込とお支払いを受け付け、発売日（2026年12月15日）から順次発送いたします。ロゴありモデルを先行予約でご注文の方には、特典「悩み別・使い方ガイド」（PDF）を、商品の発送と同時期を目安にメールでお送りします。ロゴなしモデルは在庫販売で、お支払いの確認後、即日〜翌営業日に発送いたします（特典は付きません）。</dd>
+<dd>ロゴありモデルは予約販売です。先行予約期間中にお申込とお支払いを受け付け、発売日（2026年12月15日）から順次発送いたします。ロゴありモデルを先行予約でご注文の方には、特典「悩み別・使い方ガイド」（PDF）を、商品の発送と同時期を目安にメールでお送りします。ロゴなしモデルは在庫販売で、お支払いの確認後、即日〜翌営業日に発送いたします（特典は付きません）。練習メニュー作成オプションは、購入後にご案内するアンケートへのご回答をもとに作成し、ご回答から1週間以内を目安にPDFをメールでお送りします。</dd>
 <dt>商品代金以外の必要料金</dt>
-<dd>送料: 1,200円（税込）。ただし2点以上のご注文は送料無料（同一のお届け先への同梱発送に限ります）<br>※スイング診断のご利用にあたり発生する通信料等はお客様のご負担となります。</dd>
+<dd>送料: 1,200円（税込）。ただし2点以上のご注文と、練習メニュー作成オプションをお付けのご注文は送料無料（2点以上の場合は同一のお届け先への同梱発送に限ります）<br>※練習メニュー作成のご利用にあたり発生する通信料等はお客様のご負担となります。</dd>
 <dt>支払方法・支払時期</dt>
 <dd>支払方法: クレジットカード決済（Square）<br>支払時期: ご注文時（先行予約のお申込時）に、決済リンクを通じてお支払いが確定します。</dd>
 <dt>商品の引渡し時期</dt>
-<dd>・SHADOW SPEED STICK（ロゴなしモデル）: お支払いの確認後、即日〜翌営業日に発送いたします<br>・SHADOW SPEED STICK（ロゴありモデル）: 2026年12月15日（火）から、ご注文順に順次発送いたします<br>・先行予約特典「悩み別・使い方ガイド」: 商品の発送と同時期を目安に、メールでお送りします<br>・スイング診断: お申込から3日以内を目安に、診断結果を音声または動画でお送りします<br>※ご注文の確定とは、決済ページでのお支払いが当社で確認できた時点をいいます。</dd>
+<dd>・SHADOW SPEED STICK（ロゴなしモデル）: お支払いの確認後、即日〜翌営業日に発送いたします<br>・SHADOW SPEED STICK（ロゴありモデル）: 2026年12月15日（火）から、ご注文順に順次発送いたします<br>・先行予約特典「悩み別・使い方ガイド」: 商品の発送と同時期を目安に、メールでお送りします<br>・オリジナル練習メニュー作成: 購入後にご案内するアンケートへのご回答から1週間以内を目安に、PDFをメールでお送りします<br>※ご注文の確定とは、決済ページでのお支払いが当社で確認できた時点をいいます。</dd>
 <dt>返品・交換について</dt>
-<dd>商品に欠陥がある場合を除き、返品・交換はお受けできません。商品に欠陥があった場合は、商品到着後7日以内にメール（onefordream72@gmail.com）にてご連絡ください。確認のうえ、交換または返金にて対応いたします。スイング診断については、サービスの性質上、当社が診断結果を送信した後のキャンセル・返金はお受けできません。</dd>
+<dd>商品に欠陥がある場合を除き、返品・交換はお受けできません。商品に欠陥があった場合は、商品到着後7日以内にメール（onefordream72@gmail.com）にてご連絡ください。確認のうえ、交換または返金にて対応いたします。練習メニュー作成については、サービスの性質上、作成に着手した後のキャンセル・返金はお受けできません。</dd>
 <dt>先行予約期間・発売日</dt>
 <dd>ロゴありモデル先行予約期間: 2026年11月15日（日）〜12月14日（月）。在庫（ロゴなし100本／ロゴあり100本）がなくなり次第、期間内でも受付を終了します。<br>ロゴありモデル発売日: 2026年12月15日（火）</dd>
 </dl>
@@ -428,5 +421,16 @@ footer a{text-decoration:underline}
 <a class="btn btn-big" href="#buy">購入する</a>
 </div>
 
+<script>
+document.querySelectorAll('.menu-opt').forEach(function(cb){
+  cb.addEventListener('change', function(){
+    var card = cb.closest('.buy-card');
+    var price = card.querySelector('.price-val');
+    var link = card.querySelector('.buy-link');
+    if (cb.checked) { price.textContent = cb.dataset.price; link.href = cb.dataset.link; }
+    else { price.textContent = cb.dataset.base; link.href = cb.dataset.baselink; }
+  });
+});
+</script>
 </body>
 </html>
